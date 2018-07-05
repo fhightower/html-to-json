@@ -5,7 +5,7 @@ import os
 
 import pytest
 
-from html_to_json import html_to_json
+import html_to_json
 
 
 def _read_file(file_name):

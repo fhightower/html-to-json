@@ -1,19 +1,27 @@
 # HTML to JSON
 
-[![PyPI](https://img.shields.io/pypi/v/html_to_json.svg)](https://pypi.python.org/pypi/html_to_json)
-[![Build Status](https://travis-ci.org/fhightower/html_to_json.svg?branch=master)](https://travis-ci.org/fhightower/html_to_json)
-[![codecov](https://codecov.io/gh/fhightower/html_to_json/branch/master/graph/badge.svg)](https://codecov.io/gh/fhightower/html_to_json)
-[![Documentation Status](https://readthedocs.org/projects/html-to-json/badge/?version=latest)](http://html-to-json.readthedocs.io/en/latest/?badge=latest)
-[![Updates](https://pyup.io/repos/github/fhightower/html_to_json/shield.svg)](https://pyup.io/repos/github/fhightower/html_to_json/)
-
 Convert html to json.
 
-* Free software: MIT license
-* Documentation: https://html-to-json.readthedocs.io
+## Installation
+
+You can install html-to-json as follows:
+
+```
+git clone https://gitlab.com/fhightower/html-to-json.git && cd html-to-json;
+python setup.py install --user;
+```
 
 ## Usage
 
-Coming soon...
+```python
+import html_to_json
+
+html_string = """<head>
+    <title>Test site</title>
+    <meta charset="UTF-8"></head>"""
+output_json = html_to_json.convert(html_string)
+print(output_json)
+```
 
 ## Credits
 

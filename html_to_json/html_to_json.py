@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""Convert html to json.."""
+"""Convert html to json."""
 
 import bs4
 
