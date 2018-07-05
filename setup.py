@@ -10,7 +10,7 @@ with open('LICENSE') as license_file:
     license = license_file.read()
 
 requirements = [
-    # TODO: put package requirements here
+    'bs4'
 ]
 
 test_requirements = [
