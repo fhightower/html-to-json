@@ -10,7 +10,7 @@ def iterate(html_section, json_output):
         if not isinstance(part, str):
             # for python2 - check if part is unicode
             try:
-                string_is_unicode = not isinstance(part, unicode)
+                string_is_unicode = isinstance(part, unicode)
             # for python3 - catch error when trying to use the name 'unicode'
             except NameError as e:
                 string_is_unicode = False
@@ -19,7 +19,10 @@ def iterate(html_section, json_output):
                 if not string_is_unicode:
                     if not json_output.get(part.name):
                         json_output[part.name] = list()
-            json_output[part.name].append(iterate(part, {}))
+                    json_output[part.name].append(iterate(part, {}))
+                else:
+                    if part != '\n' and part != '':
+                        json_output['value'] = part
         else:
             if part != '\n' and part != '':
                 json_output['value'] = part
