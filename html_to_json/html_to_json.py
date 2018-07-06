@@ -7,7 +7,7 @@ import bs4
 
 def iterate(html_section, json_output):
     for part in html_section:
-        if not isinstance(part, str):
+        if not isinstance(part, str) and not isinstance(part, unicode):
             if not json_output.get(part.name):
                 json_output[part.name] = list()
             json_output[part.name].append(iterate(part, {}))
