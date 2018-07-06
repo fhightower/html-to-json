@@ -19,7 +19,13 @@ def iterate(html_section, json_output):
                 if not string_is_unicode:
                     if not json_output.get(part.name):
                         json_output[part.name] = list()
-                    json_output[part.name].append(iterate(part, {}))
+                    
+                    attribute_dict = dict()
+                    if part.attrs:
+                        attribute_dict = {
+                            'attributes': part.attrs
+                        }
+                    json_output[part.name].append(iterate(part, attribute_dict))
                 else:
                     if part != '\n' and part != '':
                         json_output['value'] = part
