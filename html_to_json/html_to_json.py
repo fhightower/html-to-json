@@ -7,9 +7,18 @@ import bs4
 
 def iterate(html_section, json_output):
     for part in html_section:
-        if not isinstance(part, str) and not isinstance(part, unicode):
-            if not json_output.get(part.name):
-                json_output[part.name] = list()
+        if not isinstance(part, str):
+            # for python2 - check if part is unicode
+            try:
+                string_is_unicode = not isinstance(part, unicode)
+            # for python3 - catch error when trying to use the name 'unicode'
+            except NameError as e:
+                string_is_unicode = False
+            # no matter what - if part is not unicode, record it
+            finally:
+                if not string_is_unicode:
+                    if not json_output.get(part.name):
+                        json_output[part.name] = list()
             json_output[part.name].append(iterate(part, {}))
         else:
             if part != '\n' and part != '':
