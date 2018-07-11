@@ -5,7 +5,7 @@
 import bs4
 
 
-def iterate(html_section, json_output):
+def _iterate(html_section, json_output):
     for part in html_section:
         if not isinstance(part, str):
             # for python2 - check if part is unicode
@@ -19,13 +19,12 @@ def iterate(html_section, json_output):
                 if not string_is_unicode:
                     if not json_output.get(part.name):
                         json_output[part.name] = list()
-                    
                     attribute_dict = dict()
                     if part.attrs:
                         attribute_dict = {
                             'attributes': part.attrs
                         }
-                    json_output[part.name].append(iterate(part, attribute_dict))
+                    json_output[part.name].append(_iterate(part, attribute_dict))
                 else:
                     if part != '\n' and part != '':
                         json_output['value'] = part
@@ -39,4 +38,4 @@ def convert(html_string):
     """Convert the html string to json."""
     soup = bs4.BeautifulSoup(html_string, 'html.parser')
     l = [child for child in soup.contents]
-    return iterate(l, {})
+    return _iterate(l, {})

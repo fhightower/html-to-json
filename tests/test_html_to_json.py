@@ -3,8 +3,6 @@
 
 import os
 
-import pytest
-
 import html_to_json
 
 
