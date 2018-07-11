@@ -39,8 +39,7 @@ def _process_table(html_table):
         elif len(html_table.find_all('tr')[0].find_all('th')) == 1:
             table_data = _handle_class_a_table(html_table)
         else:
-            # TODO: not sure what to do here...
-            pass
+            raise RuntimeWarning('Unable to parse the format of the given table.')
 
     return table_data
 
