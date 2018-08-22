@@ -28,8 +28,8 @@ def _iterate(html_section, json_output):
                     json_output[part.name].append(_iterate(part, attribute_dict))
                 # this will only be true in python2 - handle an entry that is unicode
                 else:
+                    part = part.strip()
                     if part != '\n' and part != '':
-                        part = part.strip()
                         if json_output.get('value'):
                             json_output['values'] = [json_output['value']]
                             json_output['values'].append(part)
@@ -39,8 +39,8 @@ def _iterate(html_section, json_output):
                         else:
                             json_output['value'] = part
         else:
+            part = part.strip()
             if part != '\n' and part != '':
-                part = part.strip()
                 if json_output.get('value'):
                     json_output['values'] = [json_output['value']]
                     json_output['values'].append(part)

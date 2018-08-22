@@ -289,3 +289,15 @@ def test_pdfexaminer():
     json_output_string = str(json_output)
     assert '33.0@4675: pdf.exploit Corrupted JPEG2000' in json_output_string
     assert '1.0@25957: suspicious.obfuscation using app.setTimeOut to eval code' in json_output_string
+
+
+def test_empty_spaces():
+    """Make sure empty spaces are not recorded as values."""
+    html_string = """<p>bingo</p>test  <br/>   <br/>
+ing<br/>"""
+    json_output = html_to_json.convert(html_string)
+    assert json_output == {
+        'br': [{}, {}, {}],
+        'p': [{'value': 'bingo'}],
+        'values': ['test', 'ing']
+    }
