@@ -14,8 +14,9 @@ def _iterate(html_section, json_output):
             # for python3 - catch error when trying to use the name 'unicode'
             except NameError as e:
                 string_is_unicode = False
-            # no matter what - if part is not unicode, record it
+            # no matter what - keep going
             finally:
+                # if part is not unicode, record it
                 if not string_is_unicode:
                     if not json_output.get(part.name):
                         json_output[part.name] = list()
@@ -25,12 +26,29 @@ def _iterate(html_section, json_output):
                             'attributes': part.attrs
                         }
                     json_output[part.name].append(_iterate(part, attribute_dict))
+                # this will only be true in python2 - handle an entry that is unicode
                 else:
                     if part != '\n' and part != '':
-                        json_output['value'] = part
+                        part = part.strip()
+                        if json_output.get('value'):
+                            json_output['values'] = [json_output['value']]
+                            json_output['values'].append(part)
+                            del json_output['value']
+                        elif json_output.get('values'):
+                            json_output['values'].append(part)
+                        else:
+                            json_output['value'] = part
         else:
             if part != '\n' and part != '':
-                json_output['value'] = part
+                part = part.strip()
+                if json_output.get('value'):
+                    json_output['values'] = [json_output['value']]
+                    json_output['values'].append(part)
+                    del json_output['value']
+                elif json_output.get('values'):
+                    json_output['values'].append(part)
+                else:
+                    json_output['value'] = part
     return json_output
 
 
