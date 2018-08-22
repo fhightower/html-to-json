@@ -271,8 +271,8 @@ def test_missing_content():
     assert '2018-08-22' in str(json_output)
 
 
-def test_stray_content():
-    """Make sure content that is not directly within an html tag is captured properly."""
+def test_multiple_text_entries():
+    """Make sure multiple text entries are handled well."""
     html_string = """<p>bingo</p>test<br/>
 ing<br/>"""
     json_output = html_to_json.convert(html_string)
@@ -281,3 +281,11 @@ ing<br/>"""
         'p': [{'value': 'bingo'}],
         'values': ['test', 'ing']
     }
+
+
+def test_pdfexaminer():
+    html_string = _read_file('./data/pdfexaminer.com.html')
+    json_output = html_to_json.convert(html_string)
+    json_output_string = str(json_output)
+    assert '33.0@4675: pdf.exploit Corrupted JPEG2000' in json_output_string
+    assert '1.0@25957: suspicious.obfuscation using app.setTimeOut to eval code' in json_output_string
