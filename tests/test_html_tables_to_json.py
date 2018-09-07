@@ -90,13 +90,14 @@ def test_simple_class_b_table():
 
 
 def test_strange_table_format():
+    """This table should fail because there are no <th> elements."""
     html_string = """<table class="table table-striped table-bordered table-hover">
                 <tr>
                     <td>Malware Family</td>
                     <td><a href="/stats/DarkComet/">DarkComet</a></td>
                 </tr>
                 <tr>
-                    <th>Date Added</th>
+                    <td>Date Added</td>
                     <td>July 9, 2018, 6:25 a.m.</td>
                 </tr>
                 <tr>
@@ -114,3 +115,58 @@ def test_strange_table_format():
         </table>"""
     with pytest.raises(RuntimeWarning):
         json_output = html_to_json.convert_tables(html_string)
+
+
+def test_record_children_class_a_table():
+    html_string = """<table class="table table-striped table-bordered table-hover">
+        <tr>
+            <th>#</th>
+            <th>Malware</th>
+            <th>MD5</th>
+            <th>Date Added</th>
+        </tr>
+        
+        <tr>
+            <td>25548</td>
+            <td><a href="/stats/DarkComet/">DarkComet</a></td>
+            <td><a href="/config/034a37b2a2307f876adc9538986d7b86">034a37b2a2307f876adc9538986d7b86</a></td>
+            <td>July 9, 2018, 6:25 a.m.</td>
+        </tr>
+        
+        <tr>
+            <td>25547</td>
+            <td><a href="/stats/DarkComet/">DarkComet</a></td>
+            <td><a href="/config/706eeefbac3de4d58b27d964173999c3">706eeefbac3de4d58b27d964173999c3</a></td>
+            <td>July 7, 2018, 6:25 a.m.</td>
+        </tr></table>"""
+    tables = html_to_json.convert_tables(html_string, record_children=True)
+    print("tables {}".format(tables))
+    assert tables == [[{'#': [{'value': '25548'}], 'Malware': [{'a': [{'attributes': {'href': '/stats/DarkComet/'}, 'value': 'DarkComet'}]}], 'MD5': [{'a': [{'attributes': {'href': '/config/034a37b2a2307f876adc9538986d7b86'}, 'value': '034a37b2a2307f876adc9538986d7b86'}]}], 'Date Added': [{'value': 'July 9, 2018, 6:25 a.m.'}]}, {'#': [{'value': '25547'}], 'Malware': [{'a': [{'attributes': {'href': '/stats/DarkComet/'}, 'value': 'DarkComet'}]}], 'MD5': [{'a': [{'attributes': {'href': '/config/706eeefbac3de4d58b27d964173999c3'}, 'value': '706eeefbac3de4d58b27d964173999c3'}]}], 'Date Added': [{'value': 'July 7, 2018, 6:25 a.m.'}]}]]
+
+
+def test_record_children_class_b_table():
+    html_string = """<table class="table table-striped table-bordered table-hover">
+                <tr>
+                    <th>Malware Family</th>
+                    <td><a href="/stats/DarkComet/">DarkComet</a></td>
+                </tr>
+                <tr>
+                    <th>Date Added</th>
+                    <td>July 9, 2018, 6:25 a.m.</td>
+                </tr>
+                <tr>
+                    <th>MD5</th>
+                    <td>034a37b2a2307f876adc9538986d7b86</td>
+                </tr>
+                <tr>
+                    <th>Sha256</th>
+                    <td>297248d6dafe0798e7ec352aae078863b935e6257fc7e9d390bc47c324ecee13</td>
+                </tr>
+                <tr>
+                    <th>Robot</th>
+                    <td>Robots lovingly delivered by <a href="https://robohash.org">robohash.org</a></td>
+                </tr>
+        </table>"""
+    tables = html_to_json.convert_tables(html_string, record_children=True)
+    print("tables {}".format(tables))
+    assert tables == [{'Malware Family': [{'a': [{'attributes': {'href': '/stats/DarkComet/'}, 'value': 'DarkComet'}]}], 'Date Added': [{'value': 'July 9, 2018, 6:25 a.m.'}], 'MD5': [{'value': '034a37b2a2307f876adc9538986d7b86'}], 'Sha256': [{'value': '297248d6dafe0798e7ec352aae078863b935e6257fc7e9d390bc47c324ecee13'}], 'Robot': [{'value': 'Robots lovingly delivered by', 'a': [{'attributes': {'href': 'https://robohash.org'}, 'value': 'robohash.org'}]}]}]
