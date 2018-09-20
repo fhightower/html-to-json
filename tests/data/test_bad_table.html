@@ -1,0 +1,1444 @@
+<table border="0" cellspacing="0" cellpadding="0" align="center" class="table">
+                <tbody>
+                    <tr>
+                        <td>
+                        <label for="port_id">Proxy port</label>
+                        <select id='port_id' name='port' onchange='this.form.submit();' class='option'>
+                        <option selected='selected' value=''>Any port number</option>
+                        <option  value='80'>80 only</option>
+                        <option  value='8080'>8080 only</option>
+                        <option  value='3128'>3128 only</option>
+                        <option  value='Standard'>80,8080,3128,1080</option>
+                        <option  value='Not_standard'>Not 80,8080,3128,1080</option>
+                        <option  value='1080'>1080 only</option>
+                        </select>
+                        </td>
+                        <td>
+                        <label for="type_id">Type of proxy</label>
+                        <select id='type_id' name='type' onchange='this.form.submit();' class='option'>
+                        <option selected='selected' value=''>Any proxy type</option>
+                        <option  value='All_http'>All http</option>
+                        <option  value='Anonymous'>Anonymous</option>
+                        <option  value='Distorting'>Distorting</option>
+                        <option  value='Transparent'>Transparent</option>
+                        <option  value='Not_anonymous'>Not anonymous</option>
+                        <option  value='Not_distorting'>Not distorting</option>
+                        <option  value='Not_transparent'>Not transparent</option>
+                        <option  value='All_socks'>All socks</option>
+                        <option  value='Socks4'>Socks4</option>
+                        <option  value='Socks5'>Socks5</option>
+                        <option  value='CoDeeN'>CoDeeN</option>
+                        <option  value='Not_codeen'>Not CoDeeN</option>
+                        </select>
+                        </td>
+                        <td>
+                        <label for="ssl_id">SSL support</label>
+                        <select id='ssl_id' name='ssl' onchange='this.form.submit();' class='option'>
+                        <option selected='selected' value=''>Doesn't matter</option>
+                        <option  value='ssl'>With SSL support</option>
+                        <option  value='nossl'>Without SSL</option>
+                        </select>
+                        </td>
+                        <td>
+                        <label for="country_id">Country</label>
+                        <select id="country_id" name="country" onchange="this.form.submit();" class="option">
+                        <option selected='selected' value=''>Any country</option>
+                        <option  value='AF'>Afghanistan</option><option  value='AL'>Albania</option><option  value='AR'>Argentina</option><option  value='AZ'>Azerbaijan</option><option  value='BD'>Bangladesh</option><option  value='BY'>Belarus</option><option  value='BO'>Bolivia</option><option  value='BA'>Bosnia and Herzegovina</option><option  value='BR'>Brazil</option><option  value='BG'>Bulgaria</option><option  value='KH'>Cambodia</option><option  value='CM'>Cameroon</option><option  value='CA'>Canada</option><option  value='TD'>Chad</option><option  value='CL'>Chile</option><option  value='CN'>China</option><option  value='CO'>Colombia</option><option  value='CG'>Congo</option><option  value='CZ'>Czech Republic</option><option  value='EC'>Ecuador</option><option  value='EG'>Egypt</option><option  value='EU'>European Union</option><option  value='FR'>France</option><option  value='GA'>Gabon</option><option  value='DE'>Germany</option><option  value='GH'>Ghana</option><option  value='GB'>Great Britain (UK)</option><option  value='HN'>Honduras</option><option  value='HK'>Hong Kong</option><option  value='HU'>Hungary</option><option  value='IN'>India</option><option  value='ID'>Indonesia</option><option  value='IR'>Iran</option><option  value='IQ'>Iraq</option><option  value='IE'>Ireland</option><option  value='IL'>Israel</option><option  value='IT'>Italy</option><option  value='JP'>Japan</option><option  value='JO'>Jordan</option><option  value='KZ'>Kazakhstan</option><option  value='KE'>Kenya</option><option  value='KR'>Korea (South)</option><option  value='KG'>Kyrgyzstan</option><option  value='LV'>Latvia</option><option  value='LB'>Lebanon</option><option  value='LT'>Lithuania</option><option  value='MO'>Macau</option><option  value='MY'>Malaysia</option><option  value='MV'>Maldives</option><option  value='MU'>Mauritius</option><option  value='MX'>Mexico</option><option  value='MD'>Moldova</option><option  value='MN'>Mongolia</option><option  value='NP'>Nepal</option><option  value='NL'>Netherlands</option><option  value='NG'>Nigeria</option><option  value='PK'>Pakistan</option><option  value='PS'>Palestine</option><option  value='PA'>Panama</option><option  value='PY'>Paraguay</option><option  value='PE'>Peru</option><option  value='PH'>Philippines</option><option  value='PL'>Poland</option><option  value='PT'>Portugal</option><option  value='RU'>Russian Federation</option><option  value='SC'>Seychelles</option><option  value='SG'>Singapore</option><option  value='SK'>Slovak Republic</option><option  value='ZA'>South Africa</option><option  value='ES'>Spain</option><option  value='LK'>Sri Lanka</option><option  value='SE'>Sweden</option><option  value='CH'>Switzerland</option><option  value='TW'>Taiwan</option><option  value='TJ'>Tajikistan</option><option  value='TZ'>Tanzania</option><option  value='TH'>Thailand</option><option  value='TG'>Togo</option><option  value='TR'>Turkey</option><option  value='UA'>Ukraine</option><option  value='US'>United States</option><option  value='VE'>Venezuela</option><option  value='VN'>Viet Nam</option><option  value='ZW'>Zimbabwe</option>                      
+                        </select>
+                        </td>
+                        <td>
+                        <label for="latency_id">Latency</label>
+                        <select id='latency_id' name='latency' onchange='this.form.submit();' class='option'>
+                        <option selected='selected' value=''>Any latency</option>
+                        <option  value='1000'>Less than 1 sec</option>
+                        <option  value='3000'>Less than 3 sec</option>
+                        <option  value='5000'>Less than 5 sec</option>
+                        <option  value='10000'>Less than 10 sec</option>
+                        </select>
+                        </td>
+                        <td>
+                        <label for="reliability_id">Reliability</label>
+                        <select id='reliability_id' name='reliability' onchange='this.form.submit();' class='option'>
+                        <option selected='selected' value=''>Any reliability</option>
+                        <option  value='2500'>More than 25%</option>
+                        <option  value='5000'>More than 50%</option>
+                        <option  value='7500'>More than 75%</option>
+                        <option  value='9000'>More than 90%</option>
+                        </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+        
+        <div id="DataTables_Table_0_wrapper" class="table-responsive dataTables_wrapper form-inline dt-bootstrap">
+        
+                    <table class="dttable table table-striped table-bordered dt-responsive nowrap dataTable dtr-inline" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 135px;" aria-sort="ascending" aria-label="IP address: activate to sort column descending">IP address</th>
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 42px;" aria-label="Port: activate to sort column ascending">Port</th>
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 49px;" aria-label="Type: activate to sort column ascending">Type</th>
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 43px;" aria-label="SSL: activate to sort column ascending">SSL</th>
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 173px;" aria-label="Country: activate to sort column ascending">Country</th>
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 147px;" aria-label="Latency(msec): activate to sort column ascending">Latency<small>(msec)</small><a href="/faq/proxy_connection_latency.htm" title="Click here for proxy latency definition"></a></th>
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 130px;" aria-label="Reliability(%): activate to sort column ascending">Reliability<small>(%)</small><a href="/faq/proxy_reliability.htm" title="Click here for proxy reliability definition"></a></th>
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 68px;" aria-label="Details: activate to sort column ascending">Details</th>
+                            </tr>
+                        </thead>
+                    
+                        <tbody>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">104.207.144.248</td>
+                                <td>10016</td>
+                                <td>Socks5</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>30</td>
+                                <td><div class="percent_bar"><span style="width:90.83%">90.83</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">104.236.154.163</td>
+                                <td>3128</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>21146</td>
+                                <td><div class="percent_bar"><span style="width:98.15%">98.15</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">104.236.175.94</td>
+                                <td>10000</td>
+                                <td>Anonymous</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>1381</td>
+                                <td><div class="percent_bar"><span style="width:87.23%">87.23</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">104.236.241.203</td>
+                                <td>3129</td>
+                                <td>Transparent</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>10102</td>
+                                <td><div class="percent_bar"><span style="width:98.64%">98.64</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">104.236.55.48</td>
+                                <td>8080</td>
+                                <td>Anonymous</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>1817</td>
+                                <td><div class="percent_bar"><span style="width:98.43%">98.43</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">104.236.82.218</td>
+                                <td>1080</td>
+                                <td>Socks5</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>30</td>
+                                <td><div class="percent_bar"><span style="width:49.99%">49.99</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">104.237.241.20</td>
+                                <td>1080</td>
+                                <td>Socks5</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>30</td>
+                                <td><div class="percent_bar"><span style="width:100%">100</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">104.238.146.146</td>
+                                <td>8118</td>
+                                <td>Anonymous</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>947</td>
+                                <td><div class="percent_bar"><span style="width:43.43%">43.43</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">104.244.159.63</td>
+                                <td>1080</td>
+                                <td>Socks4</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>30</td>
+                                <td><div class="percent_bar"><span style="width:57.97%">57.97</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">13.91.38.119</td>
+                                <td>3128</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>419</td>
+                                <td><div class="percent_bar"><span style="width:98.15%">98.15</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">13.92.196.150</td>
+                                <td>8080</td>
+                                <td>Anonymous</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>303</td>
+                                <td><div class="percent_bar"><span style="width:69.23%">69.23</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">132.148.131.31</td>
+                                <td>80</td>
+                                <td>Anonymous</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>16789</td>
+                                <td><div class="percent_bar"><span style="width:49.11%">49.11</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">138.197.173.107</td>
+                                <td>8080</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>5972</td>
+                                <td><div class="percent_bar"><span style="width:70.98%">70.98</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">138.68.140.197</td>
+                                <td>3128</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>2952</td>
+                                <td><div class="percent_bar"><span style="width:57.77%">57.77</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">138.68.184.67</td>
+                                <td>1080</td>
+                                <td>Socks5</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>30</td>
+                                <td><div class="percent_bar"><span style="width:100%">100</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">159.65.11.99</td>
+                                <td>3128</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>2023</td>
+                                <td><div class="percent_bar"><span style="width:82.7%">82.7</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">159.65.110.167</td>
+                                <td>3128</td>
+                                <td>Distorting</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>376</td>
+                                <td><div class="percent_bar"><span style="width:99.32%">99.32</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">159.65.129.210</td>
+                                <td>8080</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>3451</td>
+                                <td><div class="percent_bar"><span style="width:60.11%">60.11</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">159.65.13.101</td>
+                                <td>3128</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>863</td>
+                                <td><div class="percent_bar"><span style="width:96.08%">96.08</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">159.65.136.198</td>
+                                <td>3128</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>757</td>
+                                <td><div class="percent_bar"><span style="width:98.04%">98.04</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">159.65.142.92</td>
+                                <td>3128</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>2081</td>
+                                <td><div class="percent_bar"><span style="width:98.04%">98.04</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">159.65.143.250</td>
+                                <td>8080</td>
+                                <td>Distorting</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>716</td>
+                                <td><div class="percent_bar"><span style="width:99.01%">99.01</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">159.65.212.93</td>
+                                <td>1080</td>
+                                <td>Socks5</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>30</td>
+                                <td><div class="percent_bar"><span style="width:100%">100</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">159.65.3.96</td>
+                                <td>3128</td>
+                                <td>Distorting</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>11088</td>
+                                <td><div class="percent_bar"><span style="width:25%">25</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">159.89.175.86</td>
+                                <td>3128</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>859</td>
+                                <td><div class="percent_bar"><span style="width:98.08%">98.08</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">159.89.192.39</td>
+                                <td>3128</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>759</td>
+                                <td><div class="percent_bar"><span style="width:92.3%">92.3</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">159.89.196.170</td>
+                                <td>3128</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>845</td>
+                                <td><div class="percent_bar"><span style="width:94.22%">94.22</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">159.89.201.112</td>
+                                <td>3128</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>902</td>
+                                <td><div class="percent_bar"><span style="width:94.22%">94.22</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">159.89.201.219</td>
+                                <td>3128</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>1126</td>
+                                <td><div class="percent_bar"><span style="width:97.92%">97.92</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">159.89.30.73</td>
+                                <td>3128</td>
+                                <td>Anonymous</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>16554</td>
+                                <td><div class="percent_bar"><span style="width:99.04%">99.04</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">162.243.118.179</td>
+                                <td>3128</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>278</td>
+                                <td><div class="percent_bar"><span style="width:99.32%">99.32</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">165.227.145.128</td>
+                                <td>1080</td>
+                                <td>Socks5</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>30</td>
+                                <td><div class="percent_bar"><span style="width:100%">100</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">165.227.94.207</td>
+                                <td>8080</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>4857</td>
+                                <td><div class="percent_bar"><span style="width:58.5%">58.5</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">167.99.111.217</td>
+                                <td>3130</td>
+                                <td>Socks5</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>30</td>
+                                <td><div class="percent_bar"><span style="width:97.49%">97.49</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">167.99.33.139</td>
+                                <td>8080</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>1799</td>
+                                <td><div class="percent_bar"><span style="width:57.14%">57.14</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">167.99.42.165</td>
+                                <td>8080</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>2354</td>
+                                <td><div class="percent_bar"><span style="width:58.43%">58.43</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">167.99.42.6</td>
+                                <td>8080</td>
+                                <td>Distorting</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>241</td>
+                                <td><div class="percent_bar"><span style="width:98.74%">98.74</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">167.99.61.206</td>
+                                <td>3128</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>275</td>
+                                <td><div class="percent_bar"><span style="width:97.96%">97.96</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">167.99.64.242</td>
+                                <td>8080</td>
+                                <td>Anonymous</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>9424</td>
+                                <td><div class="percent_bar"><span style="width:99.32%">99.32</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">167.99.67.244</td>
+                                <td>3128</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>774</td>
+                                <td><div class="percent_bar"><span style="width:93.74%">93.74</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">167.99.82.226</td>
+                                <td>8080</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>3103</td>
+                                <td><div class="percent_bar"><span style="width:57.45%">57.45</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">172.104.100.120</td>
+                                <td>3128</td>
+                                <td>Anonymous</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>7981</td>
+                                <td><div class="percent_bar"><span style="width:71.11%">71.11</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">172.104.161.188</td>
+                                <td>3128</td>
+                                <td>Transparent</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>1067</td>
+                                <td><div class="percent_bar"><span style="width:97.88%">97.88</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">172.87.221.221</td>
+                                <td>8080</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>11364</td>
+                                <td><div class="percent_bar"><span style="width:32.09%">32.09</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">173.201.177.140</td>
+                                <td>3001</td>
+                                <td>Anonymous</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>35283</td>
+                                <td><div class="percent_bar"><span style="width:19.17%">19.17</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">173.219.43.147</td>
+                                <td>11008</td>
+                                <td>Socks5</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>30</td>
+                                <td><div class="percent_bar"><span style="width:100%">100</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">173.255.248.234</td>
+                                <td>1080</td>
+                                <td>Socks5</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>30</td>
+                                <td><div class="percent_bar"><span style="width:98.88%">98.88</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">173.45.67.182</td>
+                                <td>8080</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>7416</td>
+                                <td><div class="percent_bar"><span style="width:40.08%">40.08</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">192.126.123.222</td>
+                                <td>1080</td>
+                                <td>Socks4</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>30</td>
+                                <td><div class="percent_bar"><span style="width:93.71%">93.71</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">192.241.154.247</td>
+                                <td>8080</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>5198</td>
+                                <td><div class="percent_bar"><span style="width:55.55%">55.55</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">192.30.85.19</td>
+                                <td>1080</td>
+                                <td>Socks5</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>30</td>
+                                <td><div class="percent_bar"><span style="width:100%">100</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">198.211.121.46</td>
+                                <td>80</td>
+                                <td>Distorting</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>9946</td>
+                                <td><div class="percent_bar"><span style="width:66.67%">66.67</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">198.98.49.82</td>
+                                <td>443</td>
+                                <td>Socks5</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>30</td>
+                                <td><div class="percent_bar"><span style="width:39.99%">39.99</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">199.167.213.238</td>
+                                <td>14681</td>
+                                <td>Socks5</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>30</td>
+                                <td><div class="percent_bar"><span style="width:66.65%">66.65</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">199.244.51.120</td>
+                                <td>3128</td>
+                                <td>Distorting</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>10328</td>
+                                <td><div class="percent_bar"><span style="width:88.89%">88.89</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">204.111.249.191</td>
+                                <td>10200</td>
+                                <td>Socks5</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>30</td>
+                                <td><div class="percent_bar"><span style="width:11.43%">11.43</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">204.186.76.75</td>
+                                <td>33009</td>
+                                <td>Socks5</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>30</td>
+                                <td><div class="percent_bar"><span style="width:15.97%">15.97</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">205.158.57.2</td>
+                                <td>53281</td>
+                                <td>Anonymous</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>15295</td>
+                                <td><div class="percent_bar"><span style="width:41.57%">41.57</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">206.162.238.38</td>
+                                <td>39880</td>
+                                <td>Socks5</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>30</td>
+                                <td><div class="percent_bar"><span style="width:100%">100</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">206.189.40.40</td>
+                                <td>3128</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>1013</td>
+                                <td><div class="percent_bar"><span style="width:91.67%">91.67</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">206.189.47.247</td>
+                                <td>3128</td>
+                                <td>Distorting</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>1814</td>
+                                <td><div class="percent_bar"><span style="width:88.89%">88.89</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">207.2.201.116</td>
+                                <td>1080</td>
+                                <td>Socks4</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>30</td>
+                                <td><div class="percent_bar"><span style="width:97.62%">97.62</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">207.237.36.181</td>
+                                <td>60248</td>
+                                <td>Socks5</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>30</td>
+                                <td><div class="percent_bar"><span style="width:84.17%">84.17</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">209.181.248.29</td>
+                                <td>9050</td>
+                                <td>Socks5</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>30</td>
+                                <td><div class="percent_bar"><span style="width:97.18%">97.18</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">216.1.75.152</td>
+                                <td>80</td>
+                                <td>Distorting</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>1153</td>
+                                <td><div class="percent_bar"><span style="width:98.01%">98.01</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">216.172.56.41</td>
+                                <td>1080</td>
+                                <td>Socks5</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>30</td>
+                                <td><div class="percent_bar"><span style="width:0.55%">0.55</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">23.226.93.13</td>
+                                <td>19183</td>
+                                <td>Socks5</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>30</td>
+                                <td><div class="percent_bar"><span style="width:49.97%">49.97</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">34.217.107.89</td>
+                                <td>8888</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>715</td>
+                                <td><div class="percent_bar"><span style="width:97.22%">97.22</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">34.231.247.236</td>
+                                <td>80</td>
+                                <td>Distorting</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>474</td>
+                                <td><div class="percent_bar"><span style="width:88.89%">88.89</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">34.239.167.200</td>
+                                <td>3128</td>
+                                <td>Distorting</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>306</td>
+                                <td><div class="percent_bar"><span style="width:88.89%">88.89</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">34.240.231.232</td>
+                                <td>3128</td>
+                                <td>Distorting</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>8909</td>
+                                <td><div class="percent_bar"><span style="width:63.7%">63.7</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">35.162.122.16</td>
+                                <td>8888</td>
+                                <td>Transparent</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>471</td>
+                                <td><div class="percent_bar"><span style="width:90.91%">90.91</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">35.182.108.144</td>
+                                <td>80</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>13996</td>
+                                <td><div class="percent_bar"><span style="width:80.95%">80.95</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">35.196.22.227</td>
+                                <td>80</td>
+                                <td>Anonymous</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>328</td>
+                                <td><div class="percent_bar"><span style="width:83.33%">83.33</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">35.196.56.10</td>
+                                <td>80</td>
+                                <td>Anonymous</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>310</td>
+                                <td><div class="percent_bar"><span style="width:83.33%">83.33</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">40.114.14.173</td>
+                                <td>80</td>
+                                <td>Anonymous</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>12079</td>
+                                <td><div class="percent_bar"><span style="width:60.97%">60.97</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">45.32.193.119</td>
+                                <td>8124</td>
+                                <td>Anonymous</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>5012</td>
+                                <td><div class="percent_bar"><span style="width:46.08%">46.08</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">45.32.195.95</td>
+                                <td>8123</td>
+                                <td>Anonymous</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>4630</td>
+                                <td><div class="percent_bar"><span style="width:44.46%">44.46</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">45.63.111.240</td>
+                                <td>8118</td>
+                                <td>Anonymous</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>6006</td>
+                                <td><div class="percent_bar"><span style="width:52.85%">52.85</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">45.77.119.127</td>
+                                <td>8123</td>
+                                <td>Anonymous</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>5577</td>
+                                <td><div class="percent_bar"><span style="width:55.42%">55.42</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">45.77.119.206</td>
+                                <td>8118</td>
+                                <td>Anonymous</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>4147</td>
+                                <td><div class="percent_bar"><span style="width:54.43%">54.43</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">45.77.95.158</td>
+                                <td>8123</td>
+                                <td>Anonymous</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>1067</td>
+                                <td><div class="percent_bar"><span style="width:53.37%">53.37</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">47.254.22.115</td>
+                                <td>8080</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>10046</td>
+                                <td><div class="percent_bar"><span style="width:97.22%">97.22</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">47.35.79.9</td>
+                                <td>24618</td>
+                                <td>Socks5</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>30</td>
+                                <td><div class="percent_bar"><span style="width:16.66%">16.66</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">47.52.153.167</td>
+                                <td>443</td>
+                                <td>Anonymous</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>13776</td>
+                                <td><div class="percent_bar"><span style="width:76.19%">76.19</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">47.52.231.140</td>
+                                <td>8080</td>
+                                <td>Anonymous</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>1316</td>
+                                <td><div class="percent_bar"><span style="width:97.05%">97.05</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">47.74.9.208</td>
+                                <td>3128</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>807</td>
+                                <td><div class="percent_bar"><span style="width:97.22%">97.22</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">47.75.0.253</td>
+                                <td>8081</td>
+                                <td>Anonymous</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>981</td>
+                                <td><div class="percent_bar"><span style="width:83.49%">83.49</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">47.75.152.236</td>
+                                <td>3128</td>
+                                <td>Anonymous</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>8772</td>
+                                <td><div class="percent_bar"><span style="width:71.43%">71.43</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">47.75.48.133</td>
+                                <td>1080</td>
+                                <td>Socks5</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>30</td>
+                                <td><div class="percent_bar"><span style="width:88.85%">88.85</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">47.89.10.103</td>
+                                <td>80</td>
+                                <td>Transparent</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>1481</td>
+                                <td><div class="percent_bar"><span style="width:98.82%">98.82</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">47.89.22.200</td>
+                                <td>80</td>
+                                <td>Transparent</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>5914</td>
+                                <td><div class="percent_bar"><span style="width:99.18%">99.18</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">47.89.241.103</td>
+                                <td>8080</td>
+                                <td>Anonymous</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>379</td>
+                                <td><div class="percent_bar"><span style="width:98.33%">98.33</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">47.90.63.202</td>
+                                <td>80</td>
+                                <td>Transparent</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>1520</td>
+                                <td><div class="percent_bar"><span style="width:86.12%">86.12</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">47.90.72.227</td>
+                                <td>8088</td>
+                                <td>Anonymous</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>977</td>
+                                <td><div class="percent_bar"><span style="width:99.32%">99.32</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">47.90.87.225</td>
+                                <td>88</td>
+                                <td>Anonymous</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>1009</td>
+                                <td><div class="percent_bar"><span style="width:86.68%">86.68</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">47.91.139.78</td>
+                                <td>80</td>
+                                <td>Anonymous</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>3008</td>
+                                <td><div class="percent_bar"><span style="width:94.42%">94.42</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">47.91.165.126</td>
+                                <td>80</td>
+                                <td>Transparent</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>1369</td>
+                                <td><div class="percent_bar"><span style="width:99.32%">99.32</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">50.198.134.65</td>
+                                <td>3128</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>793</td>
+                                <td><div class="percent_bar"><span style="width:86.66%">86.66</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">50.202.139.150</td>
+                                <td>8080</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>375</td>
+                                <td><div class="percent_bar"><span style="width:99.14%">99.14</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">50.233.137.32</td>
+                                <td>80</td>
+                                <td>Distorting</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>250</td>
+                                <td><div class="percent_bar"><span style="width:97.43%">97.43</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">50.233.137.33</td>
+                                <td>80</td>
+                                <td>Distorting</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>1001</td>
+                                <td><div class="percent_bar"><span style="width:97.65%">97.65</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">50.233.137.35</td>
+                                <td>80</td>
+                                <td>Distorting</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>7231</td>
+                                <td><div class="percent_bar"><span style="width:98.01%">98.01</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">50.233.137.36</td>
+                                <td>80</td>
+                                <td>Distorting</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>280</td>
+                                <td><div class="percent_bar"><span style="width:97.26%">97.26</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">50.233.137.37</td>
+                                <td>80</td>
+                                <td>Distorting</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>588</td>
+                                <td><div class="percent_bar"><span style="width:98.38%">98.38</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">50.233.137.38</td>
+                                <td>80</td>
+                                <td>Distorting</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>231</td>
+                                <td><div class="percent_bar"><span style="width:98.61%">98.61</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">50.233.137.39</td>
+                                <td>80</td>
+                                <td>Distorting</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>230</td>
+                                <td><div class="percent_bar"><span style="width:98.67%">98.67</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">52.187.144.187</td>
+                                <td>80</td>
+                                <td>Anonymous</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>1683</td>
+                                <td><div class="percent_bar"><span style="width:93.48%">93.48</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">54.183.251.107</td>
+                                <td>8088</td>
+                                <td>Anonymous</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>572</td>
+                                <td><div class="percent_bar"><span style="width:77.78%">77.78</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">54.245.217.100</td>
+                                <td>8080</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>623</td>
+                                <td><div class="percent_bar"><span style="width:97.22%">97.22</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">64.71.130.34</td>
+                                <td>3128</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>6312</td>
+                                <td><div class="percent_bar"><span style="width:62.31%">62.31</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">66.82.144.29</td>
+                                <td>8080</td>
+                                <td>Anonymous</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>363</td>
+                                <td><div class="percent_bar"><span style="width:76.26%">76.26</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">67.52.84.206</td>
+                                <td>48678</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>6923</td>
+                                <td><div class="percent_bar"><span style="width:46.49%">46.49</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">67.78.143.182</td>
+                                <td>8080</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>474</td>
+                                <td><div class="percent_bar"><span style="width:97.98%">97.98</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">70.88.158.166</td>
+                                <td>3389</td>
+                                <td>Socks5</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>30</td>
+                                <td><div class="percent_bar"><span style="width:9.66%">9.66</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">71.191.75.67</td>
+                                <td>3128</td>
+                                <td>Distorting</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>9665</td>
+                                <td><div class="percent_bar"><span style="width:94.63%">94.63</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">71.94.37.238</td>
+                                <td>25264</td>
+                                <td>Socks5</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>30</td>
+                                <td><div class="percent_bar"><span style="width:100%">100</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">75.151.213.85</td>
+                                <td>3366</td>
+                                <td>Socks4</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>30</td>
+                                <td><div class="percent_bar"><span style="width:78.69%">78.69</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">76.227.128.22</td>
+                                <td>7000</td>
+                                <td>Socks4</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>30</td>
+                                <td><div class="percent_bar"><span style="width:100%">100</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">96.85.35.233</td>
+                                <td>3128</td>
+                                <td>Distorting</td>
+                                <td>false</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>25897</td>
+                                <td><div class="percent_bar"><span style="width:67.54%">67.54</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">98.174.87.168</td>
+                                <td>13574</td>
+                                <td>Socks5</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>30</td>
+                                <td><div class="percent_bar"><span style="width:6.08%">6.08</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                        <tr role="row" class="odd"> 
+                                <td tabindex="0" class="sorting_1">98.191.98.146</td>
+                                <td>3128</td>
+                                <td>Transparent</td>
+                                <td>true</td>
+                                <td><img border="0" width="30px" src="https://www.xroxy.com/wp-content/themes/beans-child/tm-beans-child/images/countries/ext_us.png" alt="Proxy from United States"><small>&nbsp;United States</small>
+                                </td>
+                                <td>609</td>
+                                <td><div class="percent_bar"><span style="width:97.02%">97.02</span></div></td> 
+                                <td>Details</td> 
+                            </tr>
+                                                    </tbody>
+                        <tfoot>
+                            <tr>
+                                <th rowspan="1" colspan="1">IP address</th>
+                                <th rowspan="1" colspan="1">Port</th><th rowspan="1" colspan="1">Type</th><th rowspan="1" colspan="1">SSL</th>
+                                <th rowspan="1" colspan="1">Country</th>
+                                <th rowspan="1" colspan="1">Latency<small>(msec)</small></th>
+                                <th rowspan="1" colspan="1">Reliability<small>(%)</small></th>
+                                <th rowspan="1" colspan="1">Details</th>
+                            </tr>
+                        </tfoot>
+                    </table>

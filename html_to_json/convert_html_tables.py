@@ -51,7 +51,8 @@ def _process_table(html_table, record_children):
         elif len(html_table.find_all('tr')[0].find_all('th')) == 1:
             table_data = _handle_class_a_table(html_table, record_children)
         else:
-            raise RuntimeWarning('Unable to parse the format of the given table.')
+            message = 'Unable to parse the format of the given table.'
+            print(message)
     return table_data
 
 
@@ -64,6 +65,7 @@ def convert_tables(html_string, record_children=False):
 
     for table in soup.find_all('table'):
         table_data = _process_table(table, record_children)
-        tables.append(table_data)
+        if table_data:
+            tables.append(table_data)
 
     return tables
