@@ -51,7 +51,7 @@ def _process_table(html_table, record_children):
         elif len(html_table.find_all('tr')[0].find_all('th')) == 1:
             table_data = _handle_class_a_table(html_table, record_children)
         else:
-            message = 'Unable to parse the format of the given table.'
+            message = 'Unable to parse the format of the given table that starts with the text: \'{}...\''.format(str(html_table)[:40])
             print(message)
     return table_data
 
