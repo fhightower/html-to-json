@@ -1,6 +1,8 @@
 # HTML to JSON
 
-Convert html and/or html tables to json.
+![Pipeline status](https://gitlab.com/fhightower/html-to-json/badges/master/build.svg)
+
+Convert html and/or html tables to json. There is a testing/debugging interface [here](https://hub.mybinder.org/user/fhightower-html-to-json-hxbqunjo/tree).
 
 ## Installation
 
