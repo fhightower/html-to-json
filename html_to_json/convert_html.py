@@ -5,7 +5,18 @@
 import bs4
 
 
-def _iterate(html_section, json_output):
+def _debug(debug, message, prefix=''):
+    """Print the given message if debugging is true."""
+    if debug:
+        print('{}{}'.format(prefix, message))
+        # add a newline after every message
+        print('')
+
+
+def _iterate(html_section, json_output, count, debug):
+    _debug(debug, '========== Start New Iteration ==========', '    '*count)
+    _debug(debug, 'HTML_SECTION:\n{}'.format(html_section))
+    _debug(debug, 'JSON_OUTPUT:\n{}'.format(json_output))
     for part in html_section:
         if not isinstance(part, str):
             # for python2 - check if part is unicode
@@ -25,7 +36,8 @@ def _iterate(html_section, json_output):
                         attribute_dict = {
                             'attributes': part.attrs
                         }
-                    json_output[part.name].append(_iterate(part, attribute_dict))
+                    count += 1
+                    json_output[part.name].append(_iterate(part, attribute_dict, count, debug))
                 # this will only be true in python2 - handle an entry that is unicode
                 else:
                     part = part.strip()
@@ -52,8 +64,8 @@ def _iterate(html_section, json_output):
     return json_output
 
 
-def convert(html_string):
+def convert(html_string, debug=False):
     """Convert the html string to json."""
     soup = bs4.BeautifulSoup(html_string, 'html.parser')
     l = [child for child in soup.contents]
-    return _iterate(l, {})
+    return _iterate(l, {}, 0, debug)

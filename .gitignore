@@ -63,3 +63,4 @@ target/
 
 # Cookie cutter packaging file
 travis_pypi_setup.py
+.ipynb_checkpoints/
