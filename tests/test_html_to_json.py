@@ -311,3 +311,24 @@ ing<br/>"""
         'br': [{}, {}, {}],
         'p': [{'_attributes': {'id': 'foo'}}]
     }
+
+
+def test_not_capturing_element_attributes():
+    html_string = """<p id='foo'>bingo</p>test  <br/>   <br/>
+ing<br/>"""
+    json_output = html_to_json.convert(html_string, capture_element_attributes=False)
+    assert json_output == {
+        'br': [{}, {}, {}],
+        'p': [{'_value': 'bingo'}],
+        '_values': ['test', 'ing']
+    }
+
+
+def test_capturing_neither_attributes_nor_values():
+    html_string = """<p id='foo'>bingo</p>test  <br/>   <br/>
+ing<br/>"""
+    json_output = html_to_json.convert(html_string, capture_element_values=False, capture_element_attributes=False)
+    assert json_output == {
+        'br': [{}, {}, {}],
+        'p': [{}]
+    }
