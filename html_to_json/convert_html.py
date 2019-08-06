@@ -34,7 +34,7 @@ def _iterate(html_section, json_output, count, debug):
                     attribute_dict = dict()
                     if part.attrs:
                         attribute_dict = {
-                            'attributes': part.attrs
+                            '_attributes': part.attrs
                         }
                     count += 1
                     json_output[part.name].append(_iterate(part, attribute_dict, count, debug))
@@ -42,25 +42,25 @@ def _iterate(html_section, json_output, count, debug):
                 else:
                     part = part.strip()
                     if part != '\n' and part != '':
-                        if json_output.get('value'):
-                            json_output['values'] = [json_output['value']]
-                            json_output['values'].append(part)
-                            del json_output['value']
-                        elif json_output.get('values'):
-                            json_output['values'].append(part)
+                        if json_output.get('_value'):
+                            json_output['_values'] = [json_output['_value']]
+                            json_output['_values'].append(part)
+                            del json_output['_value']
+                        elif json_output.get('_values'):
+                            json_output['_values'].append(part)
                         else:
-                            json_output['value'] = part
+                            json_output['_value'] = part
         else:
             part = part.strip()
             if part != '\n' and part != '':
-                if json_output.get('value'):
-                    json_output['values'] = [json_output['value']]
-                    json_output['values'].append(part)
-                    del json_output['value']
-                elif json_output.get('values'):
-                    json_output['values'].append(part)
+                if json_output.get('_value'):
+                    json_output['_values'] = [json_output['_value']]
+                    json_output['_values'].append(part)
+                    del json_output['_value']
+                elif json_output.get('_values'):
+                    json_output['_values'].append(part)
                 else:
-                    json_output['value'] = part
+                    json_output['_value'] = part
     return json_output
 
 

@@ -72,7 +72,6 @@ def _process_table(html_table, record_children, debug):
     return table_data
 
 
-
 def convert_tables(html_string, record_children=False, debug=False):
     """Convert all of the tables in the html string to json."""
     tables = list()
