@@ -13,6 +13,12 @@ git clone https://gitlab.com/fhightower/html-to-json.git && cd html-to-json;
 python setup.py install --user;
 ```
 
+or:
+
+```
+pip install git+https://gitlab.com/fhightower/html-to-json.git
+```
+
 ## Usage
 
 ### HTML to JSON
@@ -26,6 +32,8 @@ html_string = """<head>
 output_json = html_to_json.convert(html_string)
 print(output_json)
 ```
+
+When calling the `html_to_json.convert` function, you can choose to not capture the text values from the html by passing in the key-word argument `capture_element_values=False`. You can also choose to not capture the attributes of the elements by passing `capture_element_attributes=False` into the function.
 
 #### Example
 
