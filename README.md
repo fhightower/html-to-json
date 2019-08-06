@@ -48,24 +48,24 @@ Example output:
     {
         "title": [
         {
-            "value": "Floyd Hightower\'s Projects"
+            "_value": "Floyd Hightower\'s Projects"
         }],
         "meta": [
         {
-            "attributes":
+            "_attributes":
             {
                 "charset": "UTF-8"
             }
         },
         {
-            "attributes":
+            "_attributes":
             {
                 "name": "description",
                 "content": "Floyd Hightower\'s Projects"
             }
         },
         {
-            "attributes":
+            "_attributes":
             {
                 "name": "keywords",
                 "content": "projects,fhightower,Floyd,Hightower"
