@@ -19,7 +19,7 @@ test_requirements = [
 
 setup(
     name='html_to_json',
-    version='0.3.0',
+    version='1.0.0',
     description="Convert html to json.",
     long_description=readme,
     author="Floyd Hightower",
