@@ -13,7 +13,21 @@ def _debug(debug, message, prefix=''):
         print('')
 
 
-def _iterate(html_section, json_output, count, debug):
+def _record_element_value(element, json_output):
+    """Record the html element's value in the json_output."""
+    element = element.strip()
+    if element != '\n' and element != '':
+        if json_output.get('_value'):
+            json_output['_values'] = [json_output['_value']]
+            json_output['_values'].append(element)
+            del json_output['_value']
+        elif json_output.get('_values'):
+            json_output['_values'].append(element)
+        else:
+            json_output['_value'] = element
+
+
+def _iterate(html_section, json_output, count, debug, capture_element_values):
     _debug(debug, '========== Start New Iteration ==========', '    '*count)
     _debug(debug, 'HTML_SECTION:\n{}'.format(html_section))
     _debug(debug, 'JSON_OUTPUT:\n{}'.format(json_output))
@@ -37,35 +51,19 @@ def _iterate(html_section, json_output, count, debug):
                             '_attributes': part.attrs
                         }
                     count += 1
-                    json_output[part.name].append(_iterate(part, attribute_dict, count, debug))
+                    json_output[part.name].append(_iterate(part, attribute_dict, count, debug=debug, capture_element_values=capture_element_values))
                 # this will only be true in python2 - handle an entry that is unicode
                 else:
-                    part = part.strip()
-                    if part != '\n' and part != '':
-                        if json_output.get('_value'):
-                            json_output['_values'] = [json_output['_value']]
-                            json_output['_values'].append(part)
-                            del json_output['_value']
-                        elif json_output.get('_values'):
-                            json_output['_values'].append(part)
-                        else:
-                            json_output['_value'] = part
+                    if capture_element_values:
+                        _record_element_value(part, json_output)
         else:
-            part = part.strip()
-            if part != '\n' and part != '':
-                if json_output.get('_value'):
-                    json_output['_values'] = [json_output['_value']]
-                    json_output['_values'].append(part)
-                    del json_output['_value']
-                elif json_output.get('_values'):
-                    json_output['_values'].append(part)
-                else:
-                    json_output['_value'] = part
+            if capture_element_values:
+                _record_element_value(part, json_output)
     return json_output
 
 
-def convert(html_string, debug=False):
+def convert(html_string, debug=False, capture_element_values=True):
     """Convert the html string to json."""
     soup = bs4.BeautifulSoup(html_string, 'html.parser')
     l = [child for child in soup.contents]
-    return _iterate(l, {}, 0, debug)
+    return _iterate(l, {}, 0, debug=debug, capture_element_values=capture_element_values)

@@ -301,3 +301,13 @@ ing<br/>"""
         'p': [{'_value': 'bingo'}],
         '_values': ['test', 'ing']
     }
+
+
+def test_not_capturing_element_values():
+    html_string = """<p id='foo'>bingo</p>test  <br/>   <br/>
+ing<br/>"""
+    json_output = html_to_json.convert(html_string, capture_element_values=False)
+    assert json_output == {
+        'br': [{}, {}, {}],
+        'p': [{'_attributes': {'id': 'foo'}}]
+    }
