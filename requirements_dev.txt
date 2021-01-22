@@ -1,2 +1,5 @@
-bs4
+black; python_version > '3.5'
+twine
 pytest
+pytest-cov
+codecov

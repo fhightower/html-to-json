@@ -1,22 +1,13 @@
 # HTML to JSON
 
-![Pipeline status](https://gitlab.com/fhightower/html-to-json/badges/master/build.svg)
+![Pipeline status](https://github.com/fhightower/html-to-json/badges/master/build.svg)
 
 Convert html and/or html tables to json. There is a testing/debugging interface [here](https://hub.mybinder.org/user/fhightower-html-to-json-hxbqunjo/tree).
 
 ## Installation
 
-You can install html-to-json as follows:
-
 ```
-git clone https://gitlab.com/fhightower/html-to-json.git && cd html-to-json;
-python setup.py install --user;
-```
-
-or:
-
-```
-pip install git+https://gitlab.com/fhightower/html-to-json.git
+pip install html-to-json
 ```
 
 ## Usage

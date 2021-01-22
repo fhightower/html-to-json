@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 
 from setuptools import setup, find_packages
 
@@ -19,7 +18,7 @@ test_requirements = [
 
 setup(
     name='html_to_json',
-    version='1.0.1',
+    version='1.0.0',
     description="Convert html to json.",
     long_description=readme,
     author="Floyd Hightower",
