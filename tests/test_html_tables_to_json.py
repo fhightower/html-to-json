@@ -179,5 +179,4 @@ def test_html_with_bad_table():
 def test_tables_with_thead():
     html_string = _read_file('./data/Free Proxy Lists.html')
     tables = html_to_json.convert_tables(html_string)
-    print(tables)
-    assert len(tables) == 2
+    assert len(tables) == 1
