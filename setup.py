@@ -19,7 +19,7 @@ setup(
     version='1.0.3',
     description='Convert html to json.',
     long_description=readme,
-    long_description_content_type="text/markdown",
+    long_description_content_type='text/markdown',
     author='Floyd Hightower',
     author_email='',
     url='https://github.com/fhightower/html_to_json',
