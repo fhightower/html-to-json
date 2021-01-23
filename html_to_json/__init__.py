@@ -4,4 +4,4 @@ from .convert_html import convert
 from .convert_html_tables import convert_tables
 
 __author__ = """Floyd Hightower"""
-__version__ = '1.0.2'
+__version__ = '1.0.3'
