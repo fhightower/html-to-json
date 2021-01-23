@@ -26,8 +26,15 @@ def _record_element_value(element, json_output):
             json_output['_value'] = element
 
 
-def _iterate(html_section, json_output, count, debug, capture_element_values, capture_element_attributes):
-    _debug(debug, '========== Start New Iteration ==========', '    '*count)
+def _iterate(
+    html_section,
+    json_output,
+    count,
+    debug,
+    capture_element_values,
+    capture_element_attributes,
+):
+    _debug(debug, '========== Start New Iteration ==========', '    ' * count)
     _debug(debug, 'HTML_SECTION:\n{}'.format(html_section))
     _debug(debug, 'JSON_OUTPUT:\n{}'.format(json_output))
     for part in html_section:
@@ -46,11 +53,18 @@ def _iterate(html_section, json_output, count, debug, capture_element_values, ca
                         json_output[part.name] = list()
                     new_json_output_for_subparts = dict()
                     if part.attrs and capture_element_attributes:
-                        new_json_output_for_subparts = {
-                            '_attributes': part.attrs
-                        }
+                        new_json_output_for_subparts = {'_attributes': part.attrs}
                     count += 1
-                    json_output[part.name].append(_iterate(part, new_json_output_for_subparts, count, debug=debug, capture_element_values=capture_element_values, capture_element_attributes=capture_element_attributes))
+                    json_output[part.name].append(
+                        _iterate(
+                            part,
+                            new_json_output_for_subparts,
+                            count,
+                            debug=debug,
+                            capture_element_values=capture_element_values,
+                            capture_element_attributes=capture_element_attributes,
+                        )
+                    )
                 # this will only be true in python2 - handle an entry that is unicode
                 else:
                     if capture_element_values:
@@ -61,8 +75,20 @@ def _iterate(html_section, json_output, count, debug, capture_element_values, ca
     return json_output
 
 
-def convert(html_string, debug=False, capture_element_values=True, capture_element_attributes=True):
+def convert(
+    html_string,
+    debug=False,
+    capture_element_values=True,
+    capture_element_attributes=True,
+):
     """Convert the html string to json."""
     soup = bs4.BeautifulSoup(html_string, 'html.parser')
     l = [child for child in soup.contents]
-    return _iterate(l, {}, 0, debug=debug, capture_element_values=capture_element_values, capture_element_attributes=capture_element_attributes)
+    return _iterate(
+        l,
+        {},
+        0,
+        debug=debug,
+        capture_element_values=capture_element_values,
+        capture_element_attributes=capture_element_attributes,
+    )

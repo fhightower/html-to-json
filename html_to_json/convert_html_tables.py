@@ -18,7 +18,10 @@ def _handle_class_a_table(table, record_children, debug):
         row_data = dict()
         for index, cell in enumerate(row.find_all('td')):
             if record_children:
-                _debug(debug, 'Key: "{}"\nValue: {}'.format(keys[index], convert(str(cell))['td']))
+                _debug(
+                    debug,
+                    'Key: "{}"\nValue: {}'.format(keys[index], convert(str(cell))['td']),
+                )
                 # if we are recording the children, convert the html of the <td>
                 row_data[keys[index]] = convert(str(cell))['td']
             else:
@@ -40,7 +43,10 @@ def _handle_class_b_table(table, record_children, debug):
         _debug(debug, '========== New Row ==========')
         key = row.find_all('th')[0].text
         if record_children:
-            _debug(debug, 'Key: "{}"\nValue: {}'.format(key, convert(str(row.find_all('td')[0]))['td']))
+            _debug(
+                debug,
+                'Key: "{}"\nValue: {}'.format(key, convert(str(row.find_all('td')[0]))['td']),
+            )
             # if we are recording the children, convert the html of the <td>
             table_data[key] = convert(str(row.find_all('td')[0]))['td']
         else:
@@ -59,14 +65,19 @@ def _process_table(html_table, record_children, debug):
         _debug(debug, table_class_debug_message.format('A'))
         table_data = _handle_class_a_table(html_table, record_children, debug)
     else:
-        if len(html_table.find_all('tr')[0].find_all('th')) == 1 and len(html_table.find_all('tr')[1].find_all('th')) == 1:
+        if (
+            len(html_table.find_all('tr')[0].find_all('th')) == 1
+            and len(html_table.find_all('tr')[1].find_all('th')) == 1
+        ):
             _debug(debug, table_class_debug_message.format('B'))
             table_data = _handle_class_b_table(html_table, record_children, debug)
         elif len(html_table.find_all('tr')[0].find_all('th')) == 1:
             _debug(debug, table_class_debug_message.format('A'))
             table_data = _handle_class_a_table(html_table, record_children, debug)
         else:
-            message = 'Unable to parse the format of the given table that starts with the text: \'{}...\''.format(str(html_table)[:40])
+            message = 'Unable to parse the format of the given table that starts with the text: "{}..."'.format(
+                str(html_table)[:40]
+            )
             print(message)
     return table_data
 
