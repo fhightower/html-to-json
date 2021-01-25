@@ -26,7 +26,7 @@ setup(
     packages=find_packages(exclude=('tests', 'docs')),
     include_package_data=True,
     install_requires=requirements,
-    license=license,
+    license='MIT License',
     zip_safe=True,
     keywords='html_to_json',
     classifiers=[
