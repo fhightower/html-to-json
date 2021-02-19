@@ -1,10 +1,10 @@
 # HTML to JSON
 
 [![PyPI](https://img.shields.io/pypi/v/html-to-json.svg)](https://pypi.python.org/pypi/html-to-json)
-[![Build Status](https://travis-ci.com/fhightower/html-to-json.svg?branch=master)](https://travis-ci.com/fhightower/html-to-json)
-[![codecov](https://codecov.io/gh/fhightower/html-to-json/branch/master/graph/badge.svg?token=V0WOIXRGMM)](https://codecov.io/gh/fhightower/html-to-json)
+[![Build Status](https://travis-ci.com/fhightower/html-to-json.svg?branch=main)](https://travis-ci.com/fhightower/html-to-json)
+[![codecov](https://codecov.io/gh/fhightower/html-to-json/branch/main/graph/badge.svg?token=V0WOIXRGMM)](https://codecov.io/gh/fhightower/html-to-json)
 
-Convert html and/or html tables to json. There is a testing/debugging interface [here](https://hub.mybinder.org/user/fhightower-html-to-json-hxbqunjo/tree).
+Convert HTML and/or HTML tables to JSON.
 
 ## Installation
 
