@@ -5,9 +5,6 @@ from setuptools import setup, find_packages
 with open('README.md') as readme_file:
     readme = readme_file.read()
 
-with open('LICENSE') as license_file:
-    license = license_file.read()
-
 requirements = ['bs4']
 
 test_requirements = [
@@ -22,25 +19,32 @@ setup(
     long_description_content_type='text/markdown',
     author='Floyd Hightower',
     author_email='',
-    url='https://github.com/fhightower/html_to_json',
+    url='https://github.com/fhightower/html-to-json',
+    project_urls={
+        'Documentation': 'https://github.com/fhightower/html-to-json',
+        'Say Thanks!': 'https://saythanks.io/to/floyd.hightower27%40gmail.com',
+        'Source': 'https://github.com/fhightower/html-to-json',
+        'Tracker': 'https://github.com/fhightower/html-to-json/issues',
+        'PyPi': 'https://pypi.org/project/html-to-json/',
+        'CI': 'https://travis-ci.com/fhightower/html-to-json.svg?branch=main',
+    },
     packages=find_packages(exclude=('tests', 'docs')),
     include_package_data=True,
     install_requires=requirements,
     license='MIT License',
     zip_safe=True,
-    keywords='html_to_json',
+    keywords='html to json,html,json,conversion',
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
+        'Intended Audience :: Information Technology',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.6',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
     ],
     test_suite='tests',
     tests_require=test_requirements,
