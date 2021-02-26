@@ -145,15 +145,15 @@ Example output:
 [
     [
         {
-            '#': '25548',
-            'Malware': 'DarkComet',
-            'MD5': '034a37b2a2307f876adc9538986d7b86',
-            'Date Added': 'July 9, 2018, 6:25 a.m.'
+            "#": "25548",
+            "Malware": "DarkComet",
+            "MD5": "034a37b2a2307f876adc9538986d7b86",
+            "Date Added": "July 9, 2018, 6:25 a.m."
         }, {
-            '#': '25547',
-            'Malware': 'DarkComet',
-            'MD5': '706eeefbac3de4d58b27d964173999c3',
-            'Date Added': 'July 7, 2018, 6:25 a.m.'
+            "#": "25547",
+            "Malware": "DarkComet",
+            "MD5": "706eeefbac3de4d58b27d964173999c3",
+            "Date Added": "July 7, 2018, 6:25 a.m."
         }
     ]
 ]
