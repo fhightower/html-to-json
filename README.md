@@ -49,7 +49,7 @@ Example output:
     {
         "title": [
         {
-            "_value": "Floyd Hightower\'s Projects"
+            "_value": "Floyd Hightower's Projects"
         }],
         "meta": [
         {
@@ -62,7 +62,7 @@ Example output:
             "_attributes":
             {
                 "name": "description",
-                "content": "Floyd Hightower\'s Projects"
+                "content": "Floyd Hightower's Projects"
             }
         },
         {
@@ -78,17 +78,33 @@ Example output:
 
 ### HTML Tables to JSON
 
+In addition to converting HTML to JSON, this library can also intelligently convert HTML tables to JSON.
+
+Currently, this library can handle three types of tables:
+
+A. Those with [table headers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th) in the first row
+B. Those with table headers in the first column
+C. Those without table headers
+
+Tables of type A and B are diagrammed below:
+
+![This package can handle tables with the headers in the first row or headers in the first column](./html_table_varieties.jpg)
+
+#### Example
+
+This code:
+
 ```python
 import html_to_json
 
-html_string = """<table class="table table-striped table-bordered table-hover">
+html_string = """<table>
     <tr>
         <th>#</th>
         <th>Malware</th>
         <th>MD5</th>
         <th>Date Added</th>
     </tr>
-    
+
     <tr>
         <td>25548</td>
         <td><a href="/stats/DarkComet/">DarkComet</a></td>
@@ -106,40 +122,7 @@ tables = html_to_json.convert_tables(html_string)
 print(tables)
 ```
 
-Currently, this package can handle tables with the headers in the first row or tables with headers in the first column as depicted below:
-
-![This package can handle tables with the headers in the first row or headers in the first column](./html_table_varieties.jpg)
-
-#### Example
-
-Example input:
-
-```html
-<table class="table table-striped table-bordered table-hover">
-    <tr>
-        <th>#</th>
-        <th>Malware</th>
-        <th>MD5</th>
-        <th>Date Added</th>
-    </tr>
-    
-    <tr>
-        <td>25548</td>
-        <td><a href="/stats/DarkComet/">DarkComet</a></td>
-        <td><a href="/config/034a37b2a2307f876adc9538986d7b86">034a37b2a2307f876adc9538986d7b86</a></td>
-        <td>July 9, 2018, 6:25 a.m.</td>
-    </tr>
-    
-    <tr>
-        <td>25547</td>
-        <td><a href="/stats/DarkComet/">DarkComet</a></td>
-        <td><a href="/config/706eeefbac3de4d58b27d964173999c3">706eeefbac3de4d58b27d964173999c3</a></td>
-        <td>July 7, 2018, 6:25 a.m.</td>
-    </tr>
-</table>
-```
-
-Example output:
+will produce this output:
 
 ```json
 [

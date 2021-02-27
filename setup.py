@@ -27,7 +27,7 @@ setup(
         'Tracker': 'https://github.com/fhightower/html-to-json/issues',
         'PyPi': 'https://pypi.org/project/html-to-json/',
         'CI': 'https://travis-ci.com/fhightower/html-to-json.svg?branch=main',
-        'Changelog': 'https://github.com/fhightower/html-to-json/blob/main/CHANGELOG.md'
+        'Changelog': 'https://github.com/fhightower/html-to-json/blob/main/CHANGELOG.md',
     },
     packages=find_packages(exclude=('tests', 'docs')),
     include_package_data=True,
