@@ -55,30 +55,53 @@ def _handle_class_b_table(table, record_children, debug):
     return table_data
 
 
+def _handle_headless_table(table, record_children, debug):
+    """Handle tables without "th" elements."""
+    table_data = list()
+
+    rows = table.find_all('tr')
+    _debug(debug, 'Found {} rows'.format(len(rows)))
+
+    for row in rows:
+        _debug(debug, '========== New Row ==========')
+        row_data = []
+        for column in row.find_all('td'):
+            if record_children:
+                _debug(
+                    debug,
+                    f'Value: {convert(str(column))["td"]}',
+                )
+                # if we are recording the children, convert the html of the <td>
+                row_data.append(convert(str(column))['td'])
+            else:
+                _debug(debug, f'Value: {column.text}')
+                row_data.append(column.text)
+        table_data.append(row_data)
+    return table_data
+
+
 def _process_table(html_table, record_children, debug):
     """Process the given table."""
     table_data = list()
 
-    table_class_debug_message = 'Processing table as class {} table (you can read more about the different types of tables here: https://github.com/fhightower/html-to-json#html-tables-to-json)'
+    table_class_debug_message = 'Processing table as a {} table (you can read more about the different types of tables here: https://github.com/fhightower/html-to-json#html-tables-to-json)'
 
     if len(html_table.find_all('tr')[0].find_all('th')) > 1:
-        _debug(debug, table_class_debug_message.format('A'))
+        _debug(debug, table_class_debug_message.format('class A'))
         table_data = _handle_class_a_table(html_table, record_children, debug)
     else:
         if (
             len(html_table.find_all('tr')[0].find_all('th')) == 1
             and len(html_table.find_all('tr')[1].find_all('th')) == 1
         ):
-            _debug(debug, table_class_debug_message.format('B'))
+            _debug(debug, table_class_debug_message.format('class B'))
             table_data = _handle_class_b_table(html_table, record_children, debug)
         elif len(html_table.find_all('tr')[0].find_all('th')) == 1:
-            _debug(debug, table_class_debug_message.format('A'))
+            _debug(debug, table_class_debug_message.format('class A'))
             table_data = _handle_class_a_table(html_table, record_children, debug)
         else:
-            message = 'Unable to parse the format of the given table that starts with the text: "{}..."'.format(
-                str(html_table)[:40]
-            )
-            print(message)
+            _debug(debug, table_class_debug_message.format('headless'))
+            table_data = _handle_headless_table(html_table, record_children, debug)
     return table_data
 
 
