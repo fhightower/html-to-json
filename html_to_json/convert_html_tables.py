@@ -3,7 +3,7 @@
 
 import bs4
 
-from .convert_html import convert, _debug
+from .convert_html import _debug, convert
 
 
 def _handle_class_a_table(table, record_children, debug):
