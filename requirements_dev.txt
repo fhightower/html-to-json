@@ -1,6 +1,13 @@
 black; python_version > '3.5'
-twine
+bump2version
+codecov
+democritus_file_system
+democritus_strings
+flake8
+flake8-cognitive-complexity
+ipython
+mypy
+pylint
 pytest
 pytest-cov
-codecov
-bumpversion
+pytest-benchmark
