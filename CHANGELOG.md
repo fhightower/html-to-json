@@ -4,6 +4,8 @@ This changelog is based on the format specified here: [Keep a Changelog](https:/
 
 ## [Unreleased]
 
+- Adding docker config to run tests and linting in docker
+
 ## [2.0.0] - 2021-02-27
 
 ### Added
