@@ -84,7 +84,11 @@ def _process_table(html_table, record_children, debug):
     """Process the given table."""
     table_data = list()
 
-    table_class_debug_message = 'Processing table as a {} table (you can read more about the different types of tables here: https://github.com/fhightower/html-to-json#html-tables-to-json)'
+    table_class_debug_message = (
+        'Processing table as a {} table '
+        + '(you can read more about the different types of tables here: '
+        + 'https://github.com/fhightower/html-to-json#html-tables-to-json)'
+    )
 
     if len(html_table.find_all('tr')[0].find_all('th')) > 1:
         _debug(debug, table_class_debug_message.format('class A'))

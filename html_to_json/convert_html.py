@@ -43,7 +43,7 @@ def _iterate(
             try:
                 string_is_unicode = isinstance(part, unicode)
             # for python3 - catch error when trying to use the name 'unicode'
-            except NameError as e:
+            except NameError:
                 string_is_unicode = False
             # no matter what - keep going
             finally:
@@ -83,9 +83,9 @@ def convert(
 ):
     """Convert the html string to json."""
     soup = bs4.BeautifulSoup(html_string, 'html.parser')
-    l = [child for child in soup.contents]
+    children = [child for child in soup.contents]
     return _iterate(
-        l,
+        children,
         {},
         0,
         debug=debug,
