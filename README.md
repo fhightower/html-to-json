@@ -1,13 +1,12 @@
 # HTML to JSON
 
 [![PyPI](https://img.shields.io/pypi/v/html-to-json.svg)](https://pypi.python.org/pypi/html-to-json)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/html-to-json)
 [![codecov](https://codecov.io/gh/fhightower/html-to-json/branch/main/graph/badge.svg?token=V0WOIXRGMM)](https://codecov.io/gh/fhightower/html-to-json)
 
 Convert HTML and/or HTML tables to JSON.
 
-## Current Status
-
-📢 I have a lot of demands on my time at the moment and won't be able to work on this library without [sponsorship](https://github.com/sponsors/fhightower). If this library is useful to you or if you're using this library for a business - please consider [sponsoring](https://github.com/sponsors/fhightower) me. Even a small sponsorship allows me to prioritize work on this library and ongoing maintainance. Thanks!
+If this library is useful to you or if you're using this library for a business - please consider [sponsoring](https://github.com/sponsors/fhightower) me. Even a small sponsorship allows me to prioritize work on this library and ongoing maintainance. Thanks!
 
 ## Installation
 
@@ -114,7 +113,7 @@ html_string = """<table>
         <td><a href="/config/034a37b2a2307f876adc9538986d7b86">034a37b2a2307f876adc9538986d7b86</a></td>
         <td>July 9, 2018, 6:25 a.m.</td>
     </tr>
-    
+
     <tr>
         <td>25547</td>
         <td><a href="/stats/DarkComet/">DarkComet</a></td>
