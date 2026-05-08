@@ -1,15 +1,17 @@
 #!/usr/bin/env python
 """Convert html to json."""
 
+import logging
+
 import bs4
+
+logger = logging.getLogger(__name__)
 
 
 def _debug(debug, message, prefix=''):
-    """Print the given message if debugging is true."""
+    """Log the given message if debugging is true."""
     if debug:
-        print('{}{}'.format(prefix, message))
-        # add a newline after every message
-        print('')
+        logger.debug('%s%s', prefix, message)
 
 
 def _record_element_value(element, json_output):
