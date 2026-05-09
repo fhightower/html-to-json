@@ -15,6 +15,6 @@ addopts = "-v --cov=. --cov-report term-missing --cov-fail-under 90"
 python_files = "tests/test_*.py"
 
 [build-system]
-requires = ["setuptools>=42", "wheel", "setuptools_scm[toml]>=3.4"]
+requires = ["setuptools>=42", "wheel", "setuptools_scm[toml]>=9.2.2"]
 
 [tool.setuptools_scm]
