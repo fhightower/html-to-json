@@ -144,6 +144,16 @@ will produce this output:
 ]
 ```
 
+## Development
+
+This project uses [uv](https://docs.astral.sh/uv/) for dependency and environment management. Python 3.10+ is required.
+
+```
+uv sync
+uv run pytest
+./scripts/lint.sh
+```
+
 ## Credits
 
 This package was created with [Cookiecutter](https://github.com/audreyr/cookiecutter) and fhightower's [Python project template](https://github.com/fhightower-templates/python-project-template).

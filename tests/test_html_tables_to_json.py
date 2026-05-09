@@ -6,7 +6,7 @@ import html_to_json
 
 
 def _read_file(file_name):
-    with open(os.path.abspath(os.path.join(os.path.dirname(__file__), "./{}".format(file_name))), 'r') as f:
+    with open(os.path.abspath(os.path.join(os.path.dirname(__file__), f"./{file_name}"))) as f:
         file_text = f.read()
     return file_text
 
@@ -360,7 +360,7 @@ def test_record_children_class_a_table():
             <td>July 7, 2018, 6:25 a.m.</td>
         </tr></table>"""
     tables = html_to_json.convert_tables(html_string, record_children=True)
-    print("tables {}".format(tables))
+    print(f"tables {tables}")
     assert tables == [
         [
             {
@@ -421,7 +421,7 @@ def test_record_children_class_b_table():
                 </tr>
         </table>"""
     tables = html_to_json.convert_tables(html_string, record_children=True)
-    print("tables {}".format(tables))
+    print(f"tables {tables}")
     assert tables == [
         {
             'Malware Family': [{'a': [{'_attributes': {'href': '/stats/DarkComet/'}, '_value': 'DarkComet'}]}],

@@ -10,7 +10,7 @@ def _handle_class_a_table(table, record_children, debug):
     """Handle tables with the table headers across the top row."""
     table_data = list()
     keys = [item.text for item in table.find_all('tr')[0].find_all('th')]
-    _debug(debug, 'Found {} keys:\n{}'.format(len(keys), keys))
+    _debug(debug, f'Found {len(keys)} keys:\n{keys}')
     _debug(debug, 'Found {} rows'.format(len(table.find_all('tr')[1:])))
 
     for row in table.find_all('tr')[1:]:
@@ -25,7 +25,7 @@ def _handle_class_a_table(table, record_children, debug):
                 # if we are recording the children, convert the html of the <td>
                 row_data[keys[index]] = convert(str(cell))['td']
             else:
-                _debug(debug, 'Key: "{}"\nValue: {}'.format(keys[index], cell.text))
+                _debug(debug, f'Key: "{keys[index]}"\nValue: {cell.text}')
                 row_data[keys[index]] = cell.text
         table_data.append(row_data)
     return table_data
@@ -38,7 +38,7 @@ def _handle_class_b_table(table, record_children, debug):
     # TODO: document why the `row.find_all('td')[0]` code in the block below has a [0] at the end
 
     rows = table.find_all('tr')
-    _debug(debug, 'Found {} rows'.format(len(rows)))
+    _debug(debug, f'Found {len(rows)} rows')
     for row in rows:
         _debug(debug, '========== New Row ==========')
         key = row.find_all('th')[0].text
@@ -60,7 +60,7 @@ def _handle_headless_table(table, record_children, debug):
     table_data = list()
 
     rows = table.find_all('tr')
-    _debug(debug, 'Found {} rows'.format(len(rows)))
+    _debug(debug, f'Found {len(rows)} rows')
 
     for row in rows:
         _debug(debug, '========== New Row ==========')
