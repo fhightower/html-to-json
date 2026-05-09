@@ -1,0 +1,48 @@
+#!/usr/bin/env python
+"""Tests that exercise table-handling features which span multiple table classes,
+such as parsing multiple tables from a single document or handling <thead> wrappers."""
+
+import os
+
+import html_to_json
+
+
+def _read_file(file_name):
+    with open(os.path.abspath(os.path.join(os.path.dirname(__file__), "./{}".format(file_name))), 'r') as f:
+        file_text = f.read()
+    return file_text
+
+
+def test_multiple_tables_in_single_document():
+    html_string = _read_file('./data/test_two_tables.html')
+    tables = html_to_json.convert_tables(html_string)
+    assert len(tables) == 2
+    assert tables[1] == [
+        {
+            'IP address': '104.207.144.248',
+            'Port': '10016',
+            'Type': 'Socks5',
+            'SSL': 'true',
+            'Country': '\xa0United States\n',
+            'Latency(msec)': '30',
+            'Reliability(%)': '90.83',
+            'Details': 'Details',
+        },
+        {
+            'IP address': '104.236.154.163',
+            'Port': '3128',
+            'Type': 'Transparent',
+            'SSL': 'true',
+            'Country': '\xa0United States\n',
+            'Latency(msec)': '21146',
+            'Reliability(%)': '98.15',
+            'Details': 'Details',
+        },
+        {},
+    ]
+
+
+def test_tables_with_thead():
+    html_string = _read_file('./data/Free Proxy Lists.html')
+    tables = html_to_json.convert_tables(html_string)
+    assert len(tables) == 2
