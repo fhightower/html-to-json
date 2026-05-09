@@ -815,3 +815,22 @@ def test_capturing_neither_attributes_nor_values():
 ing<br/>"""
     json_output = html_to_json.convert(html_string, capture_element_values=False, capture_element_attributes=False)
     assert json_output == {'br': [{}, {}, {}], 'p': [{}]}
+
+
+def test_html_lang_attribute_preserved():
+    """Regression test for https://github.com/fhightower/html-to-json/issues/21
+
+    The reporter observed that ``lang="en"`` could be dropped when the document
+    had a ``<head>`` full of un-self-closed ``<meta>`` tags. Make sure the root
+    ``<html>`` element's attributes survive intact.
+    """
+    html_string = """<html lang="en"><head>
+        <meta charset="utf-8">
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Expires" content="0">
+        </head>
+        <body></body>
+ </html>"""
+    json_output = html_to_json.convert(html_string)
+    assert json_output['html'][0]['_attributes'] == {'lang': 'en'}
