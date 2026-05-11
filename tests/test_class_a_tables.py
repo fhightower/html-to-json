@@ -7,7 +7,7 @@ import html_to_json
 
 
 def _read_file(file_name):
-    with open(os.path.abspath(os.path.join(os.path.dirname(__file__), "./{}".format(file_name))), 'r') as f:
+    with open(os.path.abspath(os.path.join(os.path.dirname(__file__), f"./{file_name}"))) as f:
         file_text = f.read()
     return file_text
 

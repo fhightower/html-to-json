@@ -7,8 +7,7 @@ import html_to_json
 
 def _read_file(file_name):
     with open(
-        os.path.abspath(os.path.join(os.path.dirname(__file__), "./{}".format(file_name))),
-        'r',
+        os.path.abspath(os.path.join(os.path.dirname(__file__), f"./{file_name}")),
     ) as f:
         file_text = f.read()
     return file_text
@@ -22,7 +21,7 @@ def test_content_1():
 def test_content_2():
     html_string = _read_file('./data/test2.html')
     json_output = html_to_json.convert(html_string)
-    print('json_output {}'.format(json_output))
+    print(f'json_output {json_output}')
     assert json_output['html'][0]['body'][0]['div'][0]['div'][3]['table'][0]['tr'][1:] == [
         {
             'td': [
@@ -575,7 +574,7 @@ def test_simple_html1():
     <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script>
 </head>"""
     json_output = html_to_json.convert(html_string)
-    print('json_output {}'.format(json_output))
+    print(f'json_output {json_output}')
     assert json_output == {
         'head': [
             {
@@ -642,7 +641,7 @@ def test_simple_html2():
         </li>
       </ul>"""
     json_output = html_to_json.convert(html_string)
-    print('json_output {}'.format(json_output))
+    print(f'json_output {json_output}')
     assert json_output == {
         'ul': [
             {
@@ -755,7 +754,7 @@ def test_simple_html2():
 def test_missing_content():
     html_string = _read_file('./data/test3_missing_content.html')
     json_output = html_to_json.convert(html_string)
-    print('json_output {}'.format(json_output))
+    print(f'json_output {json_output}')
     assert 'hxxp://ioa993u.space/vnc.exe' in str(json_output)
     assert '2018-08-22' in str(json_output)
 
@@ -815,3 +814,22 @@ def test_capturing_neither_attributes_nor_values():
 ing<br/>"""
     json_output = html_to_json.convert(html_string, capture_element_values=False, capture_element_attributes=False)
     assert json_output == {'br': [{}, {}, {}], 'p': [{}]}
+
+
+def test_html_lang_attribute_preserved():
+    """Regression test for https://github.com/fhightower/html-to-json/issues/21
+
+    The reporter observed that ``lang="en"`` could be dropped when the document
+    had a ``<head>`` full of un-self-closed ``<meta>`` tags. Make sure the root
+    ``<html>`` element's attributes survive intact.
+    """
+    html_string = """<html lang="en"><head>
+        <meta charset="utf-8">
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Expires" content="0">
+        </head>
+        <body></body>
+ </html>"""
+    json_output = html_to_json.convert(html_string)
+    assert json_output['html'][0]['_attributes'] == {'lang': 'en'}
