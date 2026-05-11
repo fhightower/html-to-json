@@ -46,3 +46,19 @@ def test_tables_with_thead():
     html_string = _read_file('./data/Free Proxy Lists.html')
     tables = html_to_json.convert_tables(html_string)
     assert len(tables) == 2
+
+
+def test_record_html_takes_precedence_over_record_children():
+    html_string = """<table>
+        <tr><th>Name</th><th>Link</th></tr>
+        <tr><td>DarkComet</td><td><a href="/stats/DarkComet/">stats</a></td></tr>
+    </table>"""
+    tables = html_to_json.convert_tables(html_string, record_children=True, record_html=True)
+    assert tables == [
+        [
+            {
+                'Name': 'DarkComet',
+                'Link': '<a href="/stats/DarkComet/">stats</a>',
+            }
+        ]
+    ]

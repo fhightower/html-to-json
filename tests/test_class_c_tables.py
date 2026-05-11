@@ -94,6 +94,26 @@ def test_class_c_record_children():
     ]
 
 
+def test_class_c_record_html():
+    html_string = """<table>
+                <tr>
+                    <td>Malware Family</td>
+                    <td><a href="/stats/DarkComet/">DarkComet</a></td>
+                </tr>
+                <tr>
+                    <td>Robot</td>
+                    <td>Robots lovingly delivered by <a href="https://robohash.org">robohash.org</a></td>
+                </tr>
+        </table>"""
+    json_output = html_to_json.convert_tables(html_string, record_html=True)
+    assert json_output == [
+        [
+            ['Malware Family', '<a href="/stats/DarkComet/">DarkComet</a>'],
+            ['Robot', 'Robots lovingly delivered by <a href="https://robohash.org">robohash.org</a>'],
+        ]
+    ]
+
+
 def test_class_c_variable_columns():
     """Class C tables tolerate rows with different numbers of cells."""
     html_string = """<table>

@@ -112,6 +112,33 @@ def test_class_a_record_children():
     ]
 
 
+def test_class_a_record_html():
+    html_string = """<table>
+        <tr>
+            <th>#</th>
+            <th>Malware</th>
+            <th>MD5</th>
+            <th>Date Added</th>
+        </tr>
+        <tr>
+            <td>25548</td>
+            <td><a href="/stats/DarkComet/">DarkComet</a></td>
+            <td><a href="/config/034a37b2a2307f876adc9538986d7b86">034a37b2a2307f876adc9538986d7b86</a></td>
+            <td>July 9, 2018, 6:25 a.m.</td>
+        </tr></table>"""
+    tables = html_to_json.convert_tables(html_string, record_html=True)
+    assert tables == [
+        [
+            {
+                '#': '25548',
+                'Malware': '<a href="/stats/DarkComet/">DarkComet</a>',
+                'MD5': '<a href="/config/034a37b2a2307f876adc9538986d7b86">034a37b2a2307f876adc9538986d7b86</a>',
+                'Date Added': 'July 9, 2018, 6:25 a.m.',
+            },
+        ]
+    ]
+
+
 def test_class_a_single_column():
     """A class A table with only one header column still parses correctly."""
     html_string = """<table>
