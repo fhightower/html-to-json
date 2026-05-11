@@ -11,7 +11,7 @@ def _handle_class_a_table(table, record_children, debug):
     table_data = list()
     keys = [item.text for item in table.find_all('tr')[0].find_all('th')]
     _debug(debug, f'Found {len(keys)} keys:\n{keys}')
-    _debug(debug, 'Found {} rows'.format(len(table.find_all('tr')[1:])))
+    _debug(debug, f'Found {len(table.find_all("tr")[1:])} rows')
 
     for row in table.find_all('tr')[1:]:
         _debug(debug, '========== New Row ==========')
@@ -20,7 +20,7 @@ def _handle_class_a_table(table, record_children, debug):
             if record_children:
                 _debug(
                     debug,
-                    'Key: "{}"\nValue: {}'.format(keys[index], convert(str(cell))['td']),
+                    f'Key: "{keys[index]}"\nValue: {convert(str(cell))["td"]}',
                 )
                 # if we are recording the children, convert the html of the <td>
                 row_data[keys[index]] = convert(str(cell))['td']
