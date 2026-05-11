@@ -1,20 +1,68 @@
-[tool.black]
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "html_to_json"
+version = "2.0.0"
+description = "Convert html to json."
+readme = "README.md"
+license = { text = "MIT License" }
+requires-python = ">=3.10"
+authors = [{ name = "Floyd Hightower" }]
+keywords = ["html to json", "html", "json", "conversion"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+]
+dependencies = ["beautifulsoup4"]
+
+[project.urls]
+Homepage = "https://github.com/fhightower/html-to-json"
+Documentation = "https://github.com/fhightower/html-to-json"
+Source = "https://github.com/fhightower/html-to-json"
+Tracker = "https://github.com/fhightower/html-to-json/issues"
+PyPI = "https://pypi.org/project/html-to-json/"
+Changelog = "https://github.com/fhightower/html-to-json/blob/main/CHANGELOG.md"
+
+[dependency-groups]
+dev = [
+    "ipython",
+    "mypy",
+    "pytest",
+    "pytest-cov",
+    "pytest-benchmark",
+    "ruff",
+]
+
+[tool.setuptools.packages.find]
+exclude = ["tests*", "docs*"]
+
+[tool.ruff]
 line-length = 120
-skip-string-normalization = true
+target-version = "py310"
 
-[tool.isort]
-line_length = 120
-include_trailing_comma = true
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM"]
 
-[tool.pylint."MESSAGES CONTROL"]
-max-line-length = 120
-disable = "C0114, R1705, C0103"
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["E501", "F841", "W293"]
+
+[tool.ruff.format]
+quote-style = "preserve"
+
+[tool.mypy]
+ignore_missing_imports = true
 
 [tool.pytest.ini_options]
 addopts = "-v --cov=. --cov-report term-missing --cov-fail-under 90"
 python_files = "tests/test_*.py"
-
-[build-system]
-requires = ["setuptools>=42", "wheel", "setuptools_scm[toml]>=3.4"]
-
-[tool.setuptools_scm]

@@ -4,7 +4,11 @@ This changelog is based on the format specified here: [Keep a Changelog](https:/
 
 ## [Unreleased]
 
-- Adding docker config to run tests and linting in docker
+- Drop support for Python < 3.10; declare support for Python 3.10–3.13
+- Migrate project metadata from `setup.py`/`setup.cfg` to PEP 621 `pyproject.toml`
+- Switch dev workflow from Docker/Docker Compose to `uv`
+- Replace `black`, `isort`, `flake8`, and `pylint` with `ruff`
+- Remove leftover Python 2 compatibility code in `convert_html.py`
 
 ## [2.0.0] - 2021-02-27
 
