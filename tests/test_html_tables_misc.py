@@ -17,6 +17,7 @@ def test_multiple_tables_in_single_document():
     html_string = _read_file('./data/test_two_tables.html')
     tables = html_to_json.convert_tables(html_string)
     assert len(tables) == 2
+    assert tables[0] == [['Proxy port', 'Type of proxy', 'SSL support']]
     assert tables[1] == [
         {
             'IP address': '104.207.144.248',
@@ -43,6 +44,14 @@ def test_multiple_tables_in_single_document():
 
 
 def test_tables_with_thead():
-    html_string = _read_file('./data/Free Proxy Lists.html')
+    html_string = _read_file('./data/tables_with_thead.html')
     tables = html_to_json.convert_tables(html_string)
-    assert len(tables) == 2
+    assert tables == [
+        [
+            {'Country': 'United States', 'Code': 'US'},
+            {'Country': 'Germany', 'Code': 'DE'},
+        ],
+        [
+            {'Proxy': 'proxy-a.example.com', 'Port': '8080'},
+        ],
+    ]
