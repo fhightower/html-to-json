@@ -1,5 +1,6 @@
-# This workflow will upload a Python Package using Twine when a release is created
-# For more information see: https://help.github.com/en/actions/language-and-framework-guides/using-python-with-github-actions#publishing-to-package-registries
+# This workflow will upload a Python Package to PyPI when a tag is pushed.
+# Uses PyPI trusted publishing (OIDC) — no secrets required.
+# Configure at: https://pypi.org/manage/project/html-to-json/settings/publishing/
 
 name: Upload Python Package to PyPi
 
@@ -7,28 +8,39 @@ on:
   push:
     tags:
       - 'v*'
-  release:
-    types: [published]
 
 jobs:
   deploy:
 
     runs-on: ubuntu-latest
 
+    permissions:
+      id-token: write   # required for OIDC trusted publishing
+      contents: read
+
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Ensure tag commit is on main
+      run: |
+        git fetch origin main
+        git merge-base --is-ancestor "$GITHUB_SHA" origin/main
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v5
       with:
         python-version: '3.x'
-    - name: Install dependencies
+    - name: Verify version matches tag
       run: |
-        python -m pip install --upgrade pip
-        pip install setuptools wheel twine
-    - name: Build and publish
-      env:
-        TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-      run: |
-        python setup.py sdist bdist_wheel
-        twine upload dist/*
+        TAG_VERSION="${GITHUB_REF_NAME#v}"
+        PKG_VERSION=$(python -c "import re; print(re.search(r\"version=['\\\"]([^'\\\"]+)\", open('setup.py').read()).group(1))")
+        if [ "$TAG_VERSION" != "$PKG_VERSION" ]; then
+          echo "::error::Tag version ($TAG_VERSION) does not match package version ($PKG_VERSION)"
+          exit 1
+        fi
+    - name: Set up uv
+      uses: astral-sh/setup-uv@v6
+    - name: Build
+      run: uv build
+    - name: Publish to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
