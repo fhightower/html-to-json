@@ -32,6 +32,7 @@ def _iterate(
     html_section,
     json_output,
     count,
+    *,
     debug,
     capture_element_values,
     capture_element_attributes,
@@ -65,6 +66,7 @@ def _iterate(
 
 def convert(
     html_string,
+    *,
     debug=False,
     capture_element_values=True,
     capture_element_attributes=True,
