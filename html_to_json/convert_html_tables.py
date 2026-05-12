@@ -27,7 +27,7 @@ def _cell_value(cell, record_children, record_html, debug):
     return cell.text
 
 
-def _handle_class_a_table(table, record_children, record_html, debug):
+def _handle_class_a_table(table, *, record_children, record_html, debug):
     """Handle tables with the table headers across the top row."""
     table_data = list()
     keys = [item.text for item in table.find_all('tr')[0].find_all('th')]
@@ -44,7 +44,7 @@ def _handle_class_a_table(table, record_children, record_html, debug):
     return table_data
 
 
-def _handle_class_b_table(table, record_children, record_html, debug):
+def _handle_class_b_table(table, *, record_children, record_html, debug):
     """Handle tables with the table headers in the first column (the first cell of each row)."""
     table_data = dict()
 
@@ -60,7 +60,7 @@ def _handle_class_b_table(table, record_children, record_html, debug):
     return table_data
 
 
-def _handle_headless_table(table, record_children, record_html, debug):
+def _handle_headless_table(table, *, record_children, record_html, debug):
     """Handle tables without "th" elements."""
     table_data = list()
 
@@ -74,7 +74,7 @@ def _handle_headless_table(table, record_children, record_html, debug):
     return table_data
 
 
-def _process_table(html_table, record_children, record_html, debug):
+def _process_table(html_table, *, record_children, record_html, debug):
     """Process the given table."""
     table_data = list()
 
@@ -86,24 +86,25 @@ def _process_table(html_table, record_children, record_html, debug):
 
     if len(html_table.find_all('tr')[0].find_all('th')) > 1:
         _debug(debug, table_class_debug_message.format('class A'))
-        table_data = _handle_class_a_table(html_table, record_children, record_html, debug)
+        table_data = _handle_class_a_table(html_table, record_children=record_children, record_html=record_html, debug=debug)
     else:
         if (
-            len(html_table.find_all('tr')[0].find_all('th')) == 1
+            len(html_table.find_all('tr')) > 1
+            and len(html_table.find_all('tr')[0].find_all('th')) == 1
             and len(html_table.find_all('tr')[1].find_all('th')) == 1
         ):
             _debug(debug, table_class_debug_message.format('class B'))
-            table_data = _handle_class_b_table(html_table, record_children, record_html, debug)
+            table_data = _handle_class_b_table(html_table, record_children=record_children, record_html=record_html, debug=debug)
         elif len(html_table.find_all('tr')[0].find_all('th')) == 1:
             _debug(debug, table_class_debug_message.format('class A'))
-            table_data = _handle_class_a_table(html_table, record_children, record_html, debug)
+            table_data = _handle_class_a_table(html_table, record_children=record_children, record_html=record_html, debug=debug)
         else:
             _debug(debug, table_class_debug_message.format('headless'))
-            table_data = _handle_headless_table(html_table, record_children, record_html, debug)
+            table_data = _handle_headless_table(html_table, record_children=record_children, record_html=record_html, debug=debug)
     return table_data
 
 
-def convert_tables(html_string, record_children=False, record_html=False, debug=False):
+def convert_tables(html_string, *, record_children=False, record_html=False, debug=False):
     """Convert all of the tables in the html string to json.
 
     By default, only the text of each table cell is captured. To preserve
@@ -121,7 +122,7 @@ def convert_tables(html_string, record_children=False, record_html=False, debug=
 
     _debug(debug, 'Found {} table(s)'.format(len(soup.find_all('table'))))
     for table in soup.find_all('table'):
-        table_data = _process_table(table, record_children, record_html, debug)
+        table_data = _process_table(table, record_children=record_children, record_html=record_html, debug=debug)
         if table_data:
             tables.append(table_data)
 

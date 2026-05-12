@@ -62,3 +62,10 @@ def test_record_html_takes_precedence_over_record_children():
             }
         ]
     ]
+
+
+def test_single_row_table_with_one_th():
+    """A table with a single <tr> whose first cell is a lone <th> should not raise
+    an IndexError while disambiguating between class A and class B tables (see issue #34)."""
+    tables = html_to_json.convert_tables('<table><tr><th>X</th><td></td></tr></table>')
+    assert tables == []
