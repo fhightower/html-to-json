@@ -47,6 +47,9 @@ dev = [
 [tool.setuptools.packages.find]
 exclude = ["tests*", "docs*"]
 
+[tool.setuptools.package-data]
+html_to_json = ["py.typed"]
+
 [tool.ruff]
 line-length = 120
 target-version = "py310"

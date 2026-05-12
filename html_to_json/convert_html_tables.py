@@ -1,12 +1,22 @@
 #!/usr/bin/env python
 """Convert html tables to json."""
 
+from typing import Any
+
 import bs4
+from bs4.element import Tag
 
 from .convert_html import _debug, convert
 
+# A single parsed cell value: plain text, the cell's inner HTML, or the cell's
+# children converted to JSON (see ``_cell_value``).
+CellValue = Any
+# The parsed representation of one table; the concrete shape depends on the table
+# layout (see ``_process_table``).
+TableData = list[dict[str, CellValue]] | dict[str, CellValue] | list[list[CellValue]]
 
-def _cell_value(cell, record_children, record_html, debug):
+
+def _cell_value(cell: Tag, record_children: bool, record_html: bool, debug: bool) -> CellValue:
     """Return the value for the given table cell based on the recording options.
 
     By default the cell's text is returned (nested tags are dropped). Pass
@@ -27,16 +37,18 @@ def _cell_value(cell, record_children, record_html, debug):
     return cell.text
 
 
-def _handle_class_a_table(table, *, record_children, record_html, debug):
+def _handle_class_a_table(
+    table: Tag, *, record_children: bool, record_html: bool, debug: bool
+) -> list[dict[str, CellValue]]:
     """Handle tables with the table headers across the top row."""
-    table_data = list()
+    table_data: list[dict[str, CellValue]] = list()
     keys = [item.text for item in table.find_all('tr')[0].find_all('th')]
     _debug(debug, f'Found {len(keys)} keys:\n{keys}')
     _debug(debug, f'Found {len(table.find_all("tr")[1:])} rows')
 
     for row in table.find_all('tr')[1:]:
         _debug(debug, '========== New Row ==========')
-        row_data = dict()
+        row_data: dict[str, CellValue] = dict()
         for index, cell in enumerate(row.find_all('td')):
             _debug(debug, f'Key: "{keys[index]}"')
             row_data[keys[index]] = _cell_value(cell, record_children, record_html, debug)
@@ -44,9 +56,11 @@ def _handle_class_a_table(table, *, record_children, record_html, debug):
     return table_data
 
 
-def _handle_class_b_table(table, *, record_children, record_html, debug):
+def _handle_class_b_table(
+    table: Tag, *, record_children: bool, record_html: bool, debug: bool
+) -> dict[str, CellValue]:
     """Handle tables with the table headers in the first column (the first cell of each row)."""
-    table_data = dict()
+    table_data: dict[str, CellValue] = dict()
 
     # TODO: document why the `row.find_all('td')[0]` code in the block below has a [0] at the end
 
@@ -60,9 +74,11 @@ def _handle_class_b_table(table, *, record_children, record_html, debug):
     return table_data
 
 
-def _handle_headless_table(table, *, record_children, record_html, debug):
+def _handle_headless_table(
+    table: Tag, *, record_children: bool, record_html: bool, debug: bool
+) -> list[list[CellValue]]:
     """Handle tables without "th" elements."""
-    table_data = list()
+    table_data: list[list[CellValue]] = list()
 
     rows = table.find_all('tr')
     _debug(debug, f'Found {len(rows)} rows')
@@ -74,9 +90,9 @@ def _handle_headless_table(table, *, record_children, record_html, debug):
     return table_data
 
 
-def _process_table(html_table, *, record_children, record_html, debug):
+def _process_table(html_table: Tag, *, record_children: bool, record_html: bool, debug: bool) -> TableData:
     """Process the given table."""
-    table_data = list()
+    table_data: TableData = list()
 
     table_class_debug_message = (
         'Processing table as a {} table '
@@ -112,7 +128,9 @@ def _process_table(html_table, *, record_children, record_html, debug):
     return table_data
 
 
-def convert_tables(html_string, *, record_children=False, record_html=False, debug=False):
+def convert_tables(
+    html_string: str, *, record_children: bool = False, record_html: bool = False, debug: bool = False
+) -> list[TableData]:
     """Convert all of the tables in the html string to json.
 
     By default, only the text of each table cell is captured. To preserve
@@ -124,7 +142,7 @@ def convert_tables(html_string, *, record_children=False, record_html=False, deb
 
     If both are given, ``record_html`` takes precedence.
     """
-    tables = list()
+    tables: list[TableData] = list()
 
     soup = bs4.BeautifulSoup(html_string, 'html.parser')
 
