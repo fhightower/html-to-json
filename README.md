@@ -144,6 +144,55 @@ will produce this output:
 ]
 ```
 
+#### Preserving nested tags in table cells
+
+By default, `convert_tables()` only captures the *text* of each cell, so nested tags (such as `<a>` elements) and their attributes are dropped. To keep them, pass one of the following keyword arguments:
+
+* `record_html=True` &mdash; capture each cell's inner HTML as a string.
+* `record_children=True` &mdash; capture each cell's children as JSON, using the same structure produced by `convert()`.
+
+If both are given, `record_html` takes precedence.
+
+For example, `html_to_json.convert_tables(html_string, record_html=True)` on the table above produces:
+
+```json
+[
+    [
+        {
+            "#": "25548",
+            "Malware": "<a href=\"/stats/DarkComet/\">DarkComet</a>",
+            "MD5": "<a href=\"/config/034a37b2a2307f876adc9538986d7b86\">034a37b2a2307f876adc9538986d7b86</a>",
+            "Date Added": "July 9, 2018, 6:25 a.m."
+        }, {
+            "#": "25547",
+            "Malware": "<a href=\"/stats/DarkComet/\">DarkComet</a>",
+            "MD5": "<a href=\"/config/706eeefbac3de4d58b27d964173999c3\">706eeefbac3de4d58b27d964173999c3</a>",
+            "Date Added": "July 7, 2018, 6:25 a.m."
+        }
+    ]
+]
+```
+
+while `html_to_json.convert_tables(html_string, record_children=True)` produces:
+
+```json
+[
+    [
+        {
+            "#": [{"_value": "25548"}],
+            "Malware": [{"a": [{"_attributes": {"href": "/stats/DarkComet/"}, "_value": "DarkComet"}]}],
+            "MD5": [{"a": [{"_attributes": {"href": "/config/034a37b2a2307f876adc9538986d7b86"}, "_value": "034a37b2a2307f876adc9538986d7b86"}]}],
+            "Date Added": [{"_value": "July 9, 2018, 6:25 a.m."}]
+        }, {
+            "#": [{"_value": "25547"}],
+            "Malware": [{"a": [{"_attributes": {"href": "/stats/DarkComet/"}, "_value": "DarkComet"}]}],
+            "MD5": [{"a": [{"_attributes": {"href": "/config/706eeefbac3de4d58b27d964173999c3"}, "_value": "706eeefbac3de4d58b27d964173999c3"}]}],
+            "Date Added": [{"_value": "July 7, 2018, 6:25 a.m."}]
+        }
+    ]
+]
+```
+
 ## Development
 
 This project uses [uv](https://docs.astral.sh/uv/) for dependency and environment management. Python 3.10+ is required.

@@ -79,6 +79,31 @@ def test_class_b_record_children():
     ]
 
 
+def test_class_b_record_html():
+    html_string = """<table>
+                <tr>
+                    <th>Malware Family</th>
+                    <td><a href="/stats/DarkComet/">DarkComet</a></td>
+                </tr>
+                <tr>
+                    <th>Date Added</th>
+                    <td>July 9, 2018, 6:25 a.m.</td>
+                </tr>
+                <tr>
+                    <th>Robot</th>
+                    <td>Robots lovingly delivered by <a href="https://robohash.org">robohash.org</a></td>
+                </tr>
+        </table>"""
+    tables = html_to_json.convert_tables(html_string, record_html=True)
+    assert tables == [
+        {
+            'Malware Family': '<a href="/stats/DarkComet/">DarkComet</a>',
+            'Date Added': 'July 9, 2018, 6:25 a.m.',
+            'Robot': 'Robots lovingly delivered by <a href="https://robohash.org">robohash.org</a>',
+        }
+    ]
+
+
 def test_class_b_empty_value():
     """Empty <td> values in a class B table become empty strings."""
     html_string = """<table>
