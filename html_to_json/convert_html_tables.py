@@ -95,7 +95,8 @@ def _process_table(html_table, *, record_children, debug):
         table_data = _handle_class_a_table(html_table, record_children=record_children, debug=debug)
     else:
         if (
-            len(html_table.find_all('tr')[0].find_all('th')) == 1
+            len(html_table.find_all('tr')) > 1
+            and len(html_table.find_all('tr')[0].find_all('th')) == 1
             and len(html_table.find_all('tr')[1].find_all('th')) == 1
         ):
             _debug(debug, table_class_debug_message.format('class B'))
