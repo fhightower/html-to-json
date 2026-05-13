@@ -15,7 +15,7 @@ def _read_file(file_name):
 
 def test_content_1():
     html_string = _read_file('./data/test1.html')
-    json_output = html_to_json.convert(html_string)
+    html_to_json.convert(html_string)
 
 
 def test_content_2():
