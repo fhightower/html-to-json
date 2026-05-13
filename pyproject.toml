@@ -1,6 +1,6 @@
 [build-system]
-requires = ["setuptools>=61", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [project]
 name = "html_to_json"
@@ -24,7 +24,7 @@ classifiers = [
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.14",
 ]
-dependencies = ["beautifulsoup4"]
+dependencies = ["beautifulsoup4==4.14.3"]
 
 [project.urls]
 Homepage = "https://github.com/fhightower/html-to-json"
@@ -36,26 +36,20 @@ Changelog = "https://github.com/fhightower/html-to-json/blob/main/CHANGELOG.md"
 
 [dependency-groups]
 dev = [
-    "ipython",
-    "mypy",
-    "pytest",
-    "pytest-cov",
-    "pytest-benchmark",
-    "ruff",
+    "ipython==8.*; python_version < '3.11'",
+    "ipython==9.*; python_version >= '3.11'",
+    "mypy==2.*",
+    "pytest==9.*",
+    "pytest-cov==7.*",
+    "pytest-benchmark==5.*",
+    "ruff==0.*",
 ]
-
-[tool.setuptools.packages.find]
-exclude = ["tests*", "docs*"]
 
 [tool.ruff]
 line-length = 120
-target-version = "py310"
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "UP", "B", "SIM"]
-
-[tool.ruff.lint.per-file-ignores]
-"tests/*" = ["E501", "F841", "W293"]
 
 [tool.ruff.format]
 quote-style = "preserve"
