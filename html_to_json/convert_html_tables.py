@@ -56,9 +56,7 @@ def _handle_class_a_table(
     return table_data
 
 
-def _handle_class_b_table(
-    table: Tag, *, record_children: bool, record_html: bool, debug: bool
-) -> dict[str, CellValue]:
+def _handle_class_b_table(table: Tag, *, record_children: bool, record_html: bool, debug: bool) -> dict[str, CellValue]:
     """Handle tables with the table headers in the first column (the first cell of each row)."""
     table_data: dict[str, CellValue] = dict()
 
