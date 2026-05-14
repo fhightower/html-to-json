@@ -1,0 +1,230 @@
+{% extends "base.html" %}
+
+{% block libs %}
+    {{ super() }}
+
+    <style>
+        .h2j-demo {
+            margin: 1rem 0 2rem;
+        }
+        .h2j-demo textarea {
+            width: 100%;
+            min-height: 8rem;
+            font-family: var(--md-code-font-family, monospace);
+            font-size: 0.85rem;
+        }
+        .h2j-demo pre {
+            white-space: pre-wrap;
+            word-break: break-word;
+            max-height: 28rem;
+            overflow: auto;
+        }
+        .h2j-demo .h2j-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            align-items: center;
+            margin: 0.5rem 0;
+        }
+        .h2j-demo .h2j-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 0.25rem 0 0.75rem;
+            font-size: 0.85rem;
+        }
+        .h2j-demo .h2j-options label {
+            cursor: pointer;
+            user-select: none;
+        }
+        .h2j-demo .h2j-status {
+            font-size: 0.85rem;
+            color: var(--md-default-fg-color--light);
+            margin-left: 0.25rem;
+        }
+        .h2j-demo .h2j-output-wrap {
+            position: relative;
+        }
+        .h2j-demo .h2j-output-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+        }
+        .h2j-demo select {
+            font: inherit;
+            padding: 0.2rem 0.4rem;
+        }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
+
+    <script>
+        "use strict";
+        let pyodide = undefined;
+        let pyodideReady = false;
+
+        const EXAMPLES = {
+            "head_meta": `<head>
+    <title>Floyd Hightower's Projects</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Floyd Hightower's Projects">
+    <meta name="keywords" content="projects,fhightower,Floyd,Hightower">
+</head>`,
+            "simple": `<div class="post">
+    <h1>Hello, world!</h1>
+    <p>This is a <a href="https://example.com">link</a>.</p>
+</div>`,
+            "table_headers_row": `<table>
+    <tr>
+        <th>#</th>
+        <th>Malware</th>
+        <th>MD5</th>
+        <th>Date Added</th>
+    </tr>
+    <tr>
+        <td>25548</td>
+        <td><a href="/stats/DarkComet/">DarkComet</a></td>
+        <td><a href="/config/034a37b2a2307f876adc9538986d7b86">034a37b2a2307f876adc9538986d7b86</a></td>
+        <td>July 9, 2018, 6:25 a.m.</td>
+    </tr>
+    <tr>
+        <td>25547</td>
+        <td><a href="/stats/DarkComet/">DarkComet</a></td>
+        <td><a href="/config/706eeefbac3de4d58b27d964173999c3">706eeefbac3de4d58b27d964173999c3</a></td>
+        <td>July 7, 2018, 6:25 a.m.</td>
+    </tr>
+</table>`,
+            "table_no_headers": `<table>
+    <tr><td>apple</td><td>red</td><td>1</td></tr>
+    <tr><td>banana</td><td>yellow</td><td>2</td></tr>
+    <tr><td>grape</td><td>purple</td><td>3</td></tr>
+</table>`
+        };
+
+        function setStatus(id, text) {
+            const el = document.getElementById(id);
+            if (el) el.textContent = text;
+        }
+
+        function setRunButtonsEnabled(enabled) {
+            for (const id of ['convertRunBtn', 'tablesRunBtn']) {
+                const b = document.getElementById(id);
+                if (b) {
+                    b.disabled = !enabled;
+                    if (enabled && b.dataset.label) b.innerHTML = b.dataset.label;
+                }
+            }
+        }
+
+        async function bootPyodide() {
+            setStatus('convertStatus', 'Loading Pyodide…');
+            setStatus('tablesStatus', 'Loading Pyodide…');
+            pyodide = await loadPyodide();
+            setStatus('convertStatus', 'Installing html-to-json…');
+            setStatus('tablesStatus', 'Installing html-to-json…');
+            await pyodide.loadPackage(["micropip", "beautifulsoup4"]);
+            await pyodide.runPythonAsync(`
+import micropip
+await micropip.install("html-to-json")
+import json
+import html_to_json
+            `);
+            pyodideReady = true;
+            setStatus('convertStatus', 'Ready 🎉');
+            setStatus('tablesStatus', 'Ready 🎉');
+            setRunButtonsEnabled(true);
+        }
+
+        function jsBoolToPy(b) {
+            return b ? 'True' : 'False';
+        }
+
+        async function runConvert() {
+            if (!pyodideReady) return;
+            const input = document.getElementById('convertInput').value;
+            const capVals = document.getElementById('captureValues').checked;
+            const capAttrs = document.getElementById('captureAttributes').checked;
+            try {
+                pyodide.globals.set('h2j_input', input);
+                const out = await pyodide.runPythonAsync(`
+result = html_to_json.convert(
+    h2j_input,
+    capture_element_values=${jsBoolToPy(capVals)},
+    capture_element_attributes=${jsBoolToPy(capAttrs)},
+)
+json.dumps(result, indent=4, sort_keys=False, ensure_ascii=False)
+                `);
+                document.getElementById('convertOutput').textContent = out;
+            } catch (err) {
+                document.getElementById('convertOutput').textContent = 'Error: ' + err.message;
+            }
+        }
+
+        async function runTables() {
+            if (!pyodideReady) return;
+            const input = document.getElementById('tablesInput').value;
+            const recordHtml = document.getElementById('recordHtml').checked;
+            const recordChildren = document.getElementById('recordChildren').checked;
+            try {
+                pyodide.globals.set('h2j_input', input);
+                const out = await pyodide.runPythonAsync(`
+result = html_to_json.convert_tables(
+    h2j_input,
+    record_html=${jsBoolToPy(recordHtml)},
+    record_children=${jsBoolToPy(recordChildren)},
+)
+json.dumps(result, indent=4, sort_keys=False, ensure_ascii=False)
+                `);
+                document.getElementById('tablesOutput').textContent = out;
+            } catch (err) {
+                document.getElementById('tablesOutput').textContent = 'Error: ' + err.message;
+            }
+        }
+
+        function loadExample(targetId, exampleKey) {
+            const el = document.getElementById(targetId);
+            if (el && EXAMPLES[exampleKey]) {
+                el.value = EXAMPLES[exampleKey];
+            }
+        }
+
+        async function copyOutput(outputId, btn) {
+            const text = document.getElementById(outputId).textContent || '';
+            if (!text) return;
+            try {
+                await navigator.clipboard.writeText(text);
+                const orig = btn.innerHTML;
+                btn.innerHTML = 'Copied!';
+                setTimeout(() => { btn.innerHTML = orig; }, 1200);
+            } catch (e) {
+                btn.innerHTML = 'Copy failed';
+            }
+        }
+
+        function downloadOutput(outputId, filename) {
+            const text = document.getElementById(outputId).textContent || '';
+            if (!text) return;
+            const blob = new Blob([text], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            for (const id of ['convertRunBtn', 'tablesRunBtn']) {
+                const b = document.getElementById(id);
+                if (b) b.dataset.label = b.innerHTML;
+            }
+            setRunButtonsEnabled(false);
+            bootPyodide().catch(err => {
+                setStatus('convertStatus', 'Failed to load: ' + err.message);
+                setStatus('tablesStatus', 'Failed to load: ' + err.message);
+            });
+        });
+    </script>
+{% endblock %}
