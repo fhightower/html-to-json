@@ -78,6 +78,23 @@ Example output:
 }
 ```
 
+### JSON back to HTML
+
+If you've converted HTML to JSON, made some edits to the resulting data, and want to turn it back into HTML, use `json_to_html`:
+
+```python
+import html_to_json
+
+data = html_to_json.convert('<div><p>old text</p></div>')
+data['div'][0]['p'][0]['_value'] = 'new text'
+print(html_to_json.json_to_html(data))
+# <div><p>new text</p></div>
+```
+
+Text and attribute values are HTML-escaped, list-valued attributes (such as `class`) are space-joined, and HTML5 void elements (`<br>`, `<meta>`, `<img>`, etc.) are rendered without a closing tag.
+
+Round-tripping is not lossless: the JSON representation groups sibling elements by tag name, so the relative order between *different* tags (and between tags and free-floating text captured in `_values`) is not preserved. Text captured in `_value`/`_values` is emitted before any child tags of the same node.
+
 ### HTML Tables to JSON
 
 In addition to converting HTML to JSON, this library can also intelligently convert HTML tables to JSON.
