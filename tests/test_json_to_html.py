@@ -43,14 +43,19 @@ def test_nested_elements():
             }
         ]
     }
-    expected = '<head><title>Floyd&#x27;s</title><meta charset="UTF-8"></head>'
+    expected = '<head><title>Floyd\'s</title><meta charset="UTF-8"></head>'
     assert html_to_json.json_to_html(json_input) == expected
 
 
 def test_special_characters_are_escaped():
     json_input = {'p': [{'_value': '<script>alert("x")</script>'}]}
-    expected = '<p>&lt;script&gt;alert(&quot;x&quot;)&lt;/script&gt;</p>'
+    expected = '<p>&lt;script&gt;alert("x")&lt;/script&gt;</p>'
     assert html_to_json.json_to_html(json_input) == expected
+
+
+def test_quotes_in_text_are_not_escaped():
+    json_input = {'p': [{'_value': 'say "hi" & \'bye\''}]}
+    assert html_to_json.json_to_html(json_input) == '<p>say "hi" &amp; \'bye\'</p>'
 
 
 def test_attribute_values_are_escaped():
