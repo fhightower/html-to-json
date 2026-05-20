@@ -4,7 +4,7 @@
 from html import escape
 from typing import Any
 
-JSONDict = dict[str, Any]
+from .convert_html import JSONDict
 
 # HTML5 void elements - rendered without a closing tag.
 # https://html.spec.whatwg.org/multipage/syntax.html#void-elements
@@ -60,10 +60,12 @@ def _render_node(tag: str, node: JSONDict) -> str:
 def _render_children(node: JSONDict) -> str:
     pieces: list[str] = []
 
+    # Text content only needs ``&``/``<``/``>`` escaped; quotes are significant
+    # only inside attribute values, so keep them literal for round-trip fidelity.
     if '_value' in node:
-        pieces.append(escape(str(node['_value'])))
+        pieces.append(escape(str(node['_value']), quote=False))
     if '_values' in node:
-        pieces.extend(escape(str(value)) for value in node['_values'])
+        pieces.extend(escape(str(value), quote=False) for value in node['_values'])
 
     for key, children in node.items():
         if key in ('_value', '_values', '_attributes'):
