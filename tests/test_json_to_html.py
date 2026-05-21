@@ -113,3 +113,9 @@ def test_boolean_attribute_true_renders_bare():
 def test_boolean_attribute_false_omitted():
     json_input = {'input': [{'_attributes': {'type': 'checkbox', 'checked': False}}]}
     assert html_to_json.json_to_html(json_input) == '<input type="checkbox">'
+
+
+def test_non_list_tag_value_is_skipped():
+    """Defensively ignore malformed nodes whose tag value isn't a list."""
+    json_input = {'div': [{'_value': 'keep', 'p': 'not a list'}]}
+    assert html_to_json.json_to_html(json_input) == '<div>keep</div>'
