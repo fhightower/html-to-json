@@ -34,10 +34,14 @@ markdown_extensions:
   - attr_list
   - admonition
   - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - meta
   - toc:
       permalink: true
 nav:
     - Home: index.md
+    - Interactive Demo: demo.md
     - Quick Start: quick-start.md
     - Developer Docs: development.md

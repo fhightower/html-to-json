@@ -122,7 +122,7 @@
             pyodide = await loadPyodide();
             setStatus('convertStatus', 'Installing html-to-json…');
             setStatus('tablesStatus', 'Installing html-to-json…');
-            await pyodide.loadPackage(["micropip", "beautifulsoup4"]);
+            await pyodide.loadPackage(["micropip"]);
             await pyodide.runPythonAsync(`
 import micropip
 await micropip.install("html-to-json")
@@ -215,7 +215,20 @@ json.dumps(result, indent=4, sort_keys=False, ensure_ascii=False)
             URL.revokeObjectURL(url);
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
+        let bootStarted = false;
+
+        function initDemo() {
+            if (!document.querySelector('.h2j-demo')) return;
+            // If Pyodide is already up (e.g. after instant navigation back to
+            // this page), just re-sync the button state instead of re-booting.
+            if (pyodideReady) {
+                setStatus('convertStatus', 'Ready 🎉');
+                setStatus('tablesStatus', 'Ready 🎉');
+                setRunButtonsEnabled(true);
+                return;
+            }
+            if (bootStarted) return;
+            bootStarted = true;
             for (const id of ['convertRunBtn', 'tablesRunBtn']) {
                 const b = document.getElementById(id);
                 if (b) b.dataset.label = b.innerHTML;
@@ -225,6 +238,25 @@ json.dumps(result, indent=4, sort_keys=False, ensure_ascii=False)
                 setStatus('convertStatus', 'Failed to load: ' + err.message);
                 setStatus('tablesStatus', 'Failed to load: ' + err.message);
             });
-        });
+        }
+
+        // Material's `navigation.instant` swaps page content without firing
+        // DOMContentLoaded, so subscribe to its `document$` observable, which
+        // replays for the current page and emits on every instant navigation.
+        // This script lives in the <head>, so `document$` (defined by Material's
+        // bundle at the end of <body>) isn't available yet — wait for the DOM to
+        // be ready before wiring it up, then fall back if it's still missing.
+        function setupDemoLoader() {
+            if (typeof document$ !== 'undefined' && document$.subscribe) {
+                document$.subscribe(initDemo);
+            } else {
+                initDemo();
+            }
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', setupDemoLoader);
+        } else {
+            setupDemoLoader();
+        }
     </script>
 {% endblock %}
