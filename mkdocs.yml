@@ -1,5 +1,5 @@
 site_name: HTML to JSON Docs
-site_url: ""
+site_url: https://html-to-json.hightower.space/
 repo_url: https://github.com/fhightower/html-to-json
 repo_name: html-to-json
 theme:
