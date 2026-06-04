@@ -6,7 +6,7 @@
 
 Convert HTML and/or HTML tables to JSON.
 
-👉 **[Try it in your browser](https://fhightower.github.io/html-to-json/)** — the docs site includes an interactive Pyodide-powered playground for both `convert()` and `convert_tables()`.
+👉 **[Try it in your browser](https://html-to-json.hightower.space/demo/)** — the docs site includes an interactive Pyodide-powered playground for both `convert()` and `convert_tables()`.
 
 If this library is useful to you or if you're using this library for a business - please consider [sponsoring](https://github.com/sponsors/fhightower) me. Even a small sponsorship allows me to prioritize work on this library and ongoing maintainance. Thanks!
 
