@@ -591,32 +591,30 @@ def test_simple_html1():
                         '_attributes': {
                             'name': 'google-site-verification',
                             'content': 'zI3MVR02eLr7MZ_BbS_4ZMlqjmmuriRFcvymZ6dD5Vc',
-                        },
-                        'meta': [
-                            {
-                                '_attributes': {
-                                    'name': 'keywords',
-                                    'content': 'yara,rules',
-                                }
-                            }
-                        ],
-                        'link': [
-                            {
-                                '_attributes': {
-                                    'href': '/static/css/bootstrap.css',
-                                    'rel': ['stylesheet'],
-                                }
-                            },
-                            {
-                                '_attributes': {
-                                    'href': '/static/css/style.css',
-                                    'rel': ['stylesheet'],
-                                }
-                            },
-                        ],
-                        'script': [{'_attributes': {'src': 'https://maps.googleapis.com/maps/api/js?v=3.exp'}}],
+                        }
+                    },
+                    {
+                        '_attributes': {
+                            'name': 'keywords',
+                            'content': 'yara,rules',
+                        }
                     },
                 ],
+                'link': [
+                    {
+                        '_attributes': {
+                            'href': '/static/css/bootstrap.css',
+                            'rel': ['stylesheet'],
+                        }
+                    },
+                    {
+                        '_attributes': {
+                            'href': '/static/css/style.css',
+                            'rel': ['stylesheet'],
+                        }
+                    },
+                ],
+                'script': [{'_attributes': {'src': 'https://maps.googleapis.com/maps/api/js?v=3.exp'}}],
             }
         ]
     }
