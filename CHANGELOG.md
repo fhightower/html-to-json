@@ -8,6 +8,10 @@ This changelog is based on the format specified here: [Keep a Changelog](https:/
 
 - Add `json_to_html()` to convert the JSON output of `convert()` back into an HTML string, supporting the convert-edit-convert-back workflow (see [#23](https://github.com/fhightower/html-to-json/issues/23))
 
+### Changed
+
+- Bump `beautifulsoup4` to 4.15.0. Self-closing void tags (e.g. `<meta name='...' content='...' />`) are now parsed correctly: following siblings are no longer nested inside the void element, so `convert()` returns a flatter, more accurate tree for such markup (see [#53](https://github.com/fhightower/html-to-json/pull/53))
+
 ## [3.0.0] - 2026-05-13
 
 ### Added
