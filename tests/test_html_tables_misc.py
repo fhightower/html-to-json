@@ -13,6 +13,19 @@ def _read_file(file_name):
     return file_text
 
 
+def test_empty_table_is_skipped_without_crashing():
+    # A table with no rows (including the common empty <tbody> emitted by many
+    # CMSes) should produce no output rather than raising IndexError.
+    assert html_to_json.convert_tables('<table></table>') == []
+    assert html_to_json.convert_tables('<table><tbody></tbody></table>') == []
+
+
+def test_empty_table_alongside_a_real_table():
+    html_string = '<table></table><table><tr><td>1</td><td>2</td></tr></table>'
+    tables = html_to_json.convert_tables(html_string)
+    assert tables == [[['1', '2']]]
+
+
 def test_multiple_tables_in_single_document():
     html_string = _read_file('./data/test_two_tables.html')
     tables = html_to_json.convert_tables(html_string)
