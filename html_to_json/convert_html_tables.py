@@ -92,6 +92,12 @@ def _process_table(html_table: Tag, *, record_children: bool, record_html: bool,
     """Process the given table."""
     table_data: TableData = list()
 
+    # A table with no rows (e.g. ``<table></table>`` or an empty ``<tbody>``) has
+    # nothing to process; bail out before indexing ``find_all('tr')[0]`` below.
+    if not html_table.find_all('tr'):
+        _debug(debug, 'Table has no rows; returning no data')
+        return table_data
+
     table_class_debug_message = (
         'Processing table as a {} table '
         + '(you can read more about the different types of tables here: '
