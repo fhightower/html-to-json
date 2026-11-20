@@ -79,3 +79,11 @@ def test_single_row_table_with_one_th():
     an IndexError while disambiguating between class A and class B tables (see issue #34)."""
     tables = html_to_json.convert_tables('<table><tr><th>X</th><td></td></tr></table>')
     assert tables == []
+
+
+def test_table_with_no_rows_does_not_crash():
+    """A table with no <tr> elements (e.g. an empty table or an empty <tbody>, both
+    ordinary CMS output) should return no data rather than raising an IndexError on
+    ``find_all('tr')[0]`` (see issue #63)."""
+    assert html_to_json.convert_tables('<table></table>') == []
+    assert html_to_json.convert_tables('<table><tbody></tbody></table>') == []
